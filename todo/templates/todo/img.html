@@ -1,0 +1,66 @@
+{% extends 'todo/footer.html' %}
+
+{% block main_content %}
+
+<div class="container" id="content">
+    <h1>Фото галерея {{ active }}</h1>
+    <p>Здесь можно ознакомиться с примерами работ нашей мастерской по производству мебели</p>
+    <ul class="nav nav-pills flex-column flex-sm-row">
+        <li class="nav-item m-1">
+            <a class="nav-link active" aria-current="page" href="/img/5">5 фото</a>
+        </li>
+        <li class="nav-item m-1">
+            <a class="nav-link active" href="/img/10">10 фото</a>
+        </li>
+        <li class="nav-item m-1">
+            <a class="nav-link active" href="/img/20">20 фото</a>
+        </li>
+        <li class="nav-item m-1">
+            <a class="nav-link active" href="/img/500">500 фото</a>
+        </li>
+    </ul>
+</div>
+
+
+
+<div class="container border shadow-sm rounded p-3" id="content">
+
+    {% for img in bd_data %}
+    <!-- Button trigger modal -->
+    <img src="{{img.thumb}}" class="img-thumbnail rounded mx-auto p-1 img_hover" data-bs-toggle="modal"
+        data-bs-target="#modal_{{img.id}}">
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal_{{img.id}}" tabindex="-1" aria-labelledby="modal_Label"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal_Label">{{img.name}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <img class="modal-body" src="{{img.path}}" alt="{{img.name}}">
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock main_content %}
+
+
+
+
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{img.id}}">
+    {{img.id}}
+  </button>
+<a data-bs-toggle="modal" data-bs-target="#{{img.id}}"><img src={{ img.thumb }} class="img-thumbnail rounded mx-auto p-1" ></a>
+<div id="{{img.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <img src={{ img.path }} class="img-thumbnail rounded mx-auto p-1">
+        </div>
+    </div>
+</div> -->

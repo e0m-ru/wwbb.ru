@@ -1,0 +1,26 @@
+{% extends 'todo/header.html' %}
+{% block main_content %}
+
+<div class="container mb-5 p-2 p-sm-5 rounded bg-white-75 shadow-sm">
+    <h1 class="text-secondary h4">Редактировать отзыв</h1>
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input class="form-control" type="text" name="name" maxlength="100" required="" id="id_name"
+                placeholder="Ваше Имя" value="{{ form.name.value }}">
+        </div>
+
+        <div class="mb-3">
+            <textarea name="comment" class="form-control text-muted" cols="38" rows="5" required="" id="id_comment">{{ form.comment.value }}
+            </textarea>
+        </div>
+
+        <div class="">
+            <input name="public" type="checkbox" autocomplete="off" checked style="display: none;">
+            <input type="submit" class="btn btn-secondary" value="Схранить комментарий">
+            <a href="/" class="btn btn-primary">Отмена</a>
+            <a href="{% url 'delete_comment' comment.id %}" class="btn btn-danger">Удалить</a>
+        </div>
+    </form>
+</div>
+{% endblock main_content %}

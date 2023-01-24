@@ -1,0 +1,30 @@
+{% extends 'todo/footer.html' %}
+
+{% block main_content %}
+
+<div class="container mt-5 mb-5">
+  {% for elm in content %}
+  <div class="shadow-sm p-3 mb-5 bg-light bg-gradient text-primary">
+    
+      <p class="">{{ elm.1 }}</p>
+      <h5 class="">{{ elm.2 }}</h5>
+      <hr>
+      {% for pic in elm.3 %}
+      <!-- Button trigger modal -->
+      <img src="{{ pic.sizes.7.url }}" class="img-thumbnail rounded mx-auto p-1 img_hover" data-bs-toggle="modal"
+        data-bs-target="#modal_{{ pic.id }}">
+   
+    <!-- Modal -->
+    <div class="modal fade" id="modal_{{ pic.id }}" tabindex="-1" aria-labelledby="modal_Label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <img class="modal-body" src="{{pic.sizes.9.url}}"/>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock main_content %}

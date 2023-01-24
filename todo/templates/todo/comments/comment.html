@@ -1,0 +1,15 @@
+{% extends 'todo/footer.html' %}
+{% block main_content %}
+<div class="container mb-5 p-2 p-sm-5 rounded bg-white-75 shadow-sm">
+    <div class="m-5">
+        <small class="">{{ comment.created_at }}</small>
+        <h5 class="">{{ comment.name }}</h5>
+        <p class="">{{ comment.comment }}</p>
+        <div>
+            {% if user.is_authenticated %}
+            <a href="/update_comment/{{ comment.id }}" class="btn btn-danger btn-sm">редактировать</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock main_content %}

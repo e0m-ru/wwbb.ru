@@ -1,0 +1,16 @@
+{% extends 'todo/footer.html' %}
+{% block main_content %}
+<div class="container" id="content">
+
+<form action="" method="POST">
+     {% csrf_token %}
+     <p>Вы действительно хотите удалить <b>"{{ project }}"</b>?</p>
+     <p>И файлы фото:</p>
+     {% for img in album %}
+          <img src="/media/photos/{{ project.id }}/{{ img }}" height="100px">
+     {% endfor %}
+     <a href="{% url 'posts' %}" class="btn btn-primary">Отмена</a>
+     <input type="submit" name="" value="Подтвердить удаление" class="btn btn-danger"/>
+</form>
+</div>
+{% endblock main_content %}

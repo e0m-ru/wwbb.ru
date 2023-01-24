@@ -1,0 +1,30 @@
+{% extends 'todo/footer.html' %}
+
+{% block main_content %}
+
+<div class="container mb-5 p-2 p-sm-5 rounded">
+    <h1 class="text-secondary h4">Оставьте ваш отзыв:</h1>
+    <form id="post_form" method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input class="form-control" type="text" name="name" maxlength="100" required="" id="id_name"
+                placeholder="Ваше Имя">
+        </div>
+        <div class="mb-3">
+            <textarea name="comment" class="form-control text-muted" cols="38" rows="5" required="" id="id_comment"
+                placeholder="Оставьте ваше мнение о нашей работе "></textarea>
+        </div>
+        <div style="height: 100px" id="captcha-container" class="smart-captcha mb-3"
+            data-sitekey="kFajSJl59kuzxjz0XJ6ScaWJ9Rc73I5rj0XKfOkc">
+        </div>
+        <div class="">
+            <input name="public" type="checkbox" autocomplete="off" checked style="display: none;">
+            <input type="submit" class="btn btn-secondary" value="Схранить комментарий">
+            <a href="/" class="btn btn-primary">Отмена</a>
+        </div>
+    </form>
+
+    {{ req.POST }}
+</div>
+<script src="https://captcha-api.yandex.ru/captcha.js" defer></script>
+{% endblock main_content %}

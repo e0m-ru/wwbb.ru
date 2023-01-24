@@ -1,0 +1,16 @@
+{% extends 'todo/header.html' %}
+
+{% block main_content %}
+<div class="container p-4 mt-5" id="content">
+    <h1 class="p-2">Вы хотите удалить отзыв #{{comment.id}}?</h1>
+    <div class="d-flex flex-row">
+        <h5 class="text-end">{{ comment.name}}</h5>
+        <small class="text-end p-2">{{ comment.created_at}}</small>
+    </div>
+    <p>{{ comment.comment}}</p>
+    <form enctype="multipart/form-data" method="POST">
+        <input type="submit" name="" value="Удалить отзыв">
+    </form>
+
+</div>
+{% endblock main_content %}

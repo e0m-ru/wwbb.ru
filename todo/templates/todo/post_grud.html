@@ -1,0 +1,12 @@
+{% extends 'todo/footer.html' %}
+{% block main_content %}
+<div class="container" id="content">
+    <h1>Информация о проекте</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" name="" value="Схранить проект">
+    </form>
+
+</div>
+{% endblock main_content %}

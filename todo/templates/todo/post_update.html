@@ -1,0 +1,49 @@
+{% extends 'todo/footer.html' %}
+{% block main_content %}
+<div class="container mb-5 p-3 px-5 rounded bg-white-75 shadow-sm">
+    
+<h1 class="text-secondary h4">#{{ project.id }} - {{ project.title}} </h1>
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+
+        {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+        {% endfor %}
+        <div class="mb-3">
+            <label for="id_title">Заголовок:</label>
+            <input class="form-control" type="text" name="title" maxlength="100" required="" id="id_title" value="{{ form.title.value }}">
+        </div>
+        <div class="mb-3">
+            <label for="id_description">Описание:</label>
+            <textarea class="form-control" name="description" cols="40" rows="10" id="id_description">{{ form.description.value }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="id_tags">#Тэги:</label>
+            <input class="form-control" type="text" name="tags" maxlength="100" id="id_tags" value="{{ form.tags.value }}">
+        </div>
+        <div class="mb-3">
+            <label for="id_rating">Рейтинг (чем больше тем выше в выдаче):</label>
+            <input class="form-control" type="number" name="rating" id="id_rating" value="{{ form.rating.value }}">
+        </div>
+        <div class="mb-3 border p-3">
+            <h5 class="form-label">Фото Альбом</h5>
+            <input class="form-control" type="file" name="image" multiple="" accept="image/*" id="id_image">
+            <div>
+                {% for img in album %}
+                <img src="/media/{{ img }}" height="50px">
+                {% endfor %}
+            </div>
+        </div>
+        <div class="mb-3">
+            <input class="" type="checkbox" name="public" id="id_public" checked="">
+            <label for="id_public">Опубликован:</label>
+        </div>
+        <div class="d-grid gap-2">
+            <a href="/posts" class="btn btn-primary">Отмена</a>
+            <input class="btn btn-secondary" type="submit" name="" value="Схранить проект" class="btn btn-secondary">
+        </div>
+        <a href="{% url 'post_delete' project.id %}" class="btn btn-danger">Удалить</a>
+    </form>
+
+</div>
+{% endblock main_content %}

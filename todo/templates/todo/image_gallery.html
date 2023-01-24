@@ -1,0 +1,12 @@
+{% extends 'todo/footer.html' %}
+
+{% block main_content %}
+<link rel="stylesheet" href="/static/css/image_gallery.css">
+   
+<main class="gallery_container" id="gallery_container">
+    {{ projects.0.title }}
+</main>
+<script>
+    document.getElementById('gallery_container').onclick()
+</script>
+{% endblock main_content %}

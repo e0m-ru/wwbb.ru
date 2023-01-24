@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title> {{ title }} {{ project.title }}</title>
+    <base href="https://wwbb.ru/">
+    <link rel="canonical" href="https://wwbb.ru/">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- wwbb.ru - Сайт мебельного производства. -->
+    <meta name="description"
+        content="{{ description }} Мы предлагаем производство мебели на заказ. Бесплатный замер и расчет стоимости, доставка и установка по Москве и московской области.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="yandex-verification" content="92507ba5be853a66">
+    <meta name="keywords"
+        content="производство, корпусная, мебель, фабрика, шкаф, кухня, гардероб, цех, проектирование, на заказ, Московская область, wwbb.ru, установка, монтаж, замер, доставка">
+    <link rel="icon" type="image/svg+xml" href="/static/favicon/favicon_white.svg">
+    <link rel="icon" type="image/png" href="/static/favicon/favicon.png">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/custom.css">
+    <link rel="stylesheet" href="/static/css/lightbox.css">
+    <link rel="icon" href="/static/favicon/favicon.png" sizes="32x32">
+
+    <link type="image/x-icon" rel="shortcut icon" href="/static/favicon/favicon.ico">
+    <link type="image/png" sizes="16x16" rel="icon" href="/static/favicon/favicon-16x16.png">
+    <link type="image/png" sizes="32x32" rel="icon" href="/static/favicon/favicon-32x32.png">
+    <link type="image/png" sizes="96x96" rel="icon" href="/static/favicon/favicon-96x96.png">
+    <link type="image/png" sizes="120x120" rel="icon" href="/static/favicon/favicon-120x120.png">
+    <link type="image/png" sizes="192x192" rel="icon" href="/static/favicon/android-chrome-192x192.png">
+
+    <link sizes="57x57" rel="apple-touch-icon" href="/static/favicon/apple-touch-icon-57x57.png">
+    <link sizes="60x60" rel="apple-touch-icon" href="/static/favicon/apple-touch-icon-60x60.png">
+    <link sizes="72x72" rel="apple-touch-icon" href="/static/favicon/apple-touch-icon-72x72.png">
+    <link sizes="76x76" rel="apple-touch-icon" href="/static/favicon/apple-touch-icon-76x76.png">
+    <link sizes="114x114" rel="apple-touch-icon" href="/static/favicon/apple-touch-icon-114x114.png">
+    <link sizes="120x120" rel="apple-touch-icon" href="/static/favicon/apple-touch-icon-120x120.png">
+    <link sizes="144x144" rel="apple-touch-icon" href="/static/favicon/apple-touch-icon-144x144.png">
+    <link sizes="152x152" rel="apple-touch-icon" href="/static/favicon/apple-touch-icon-152x152.png">
+    <link sizes="180x180" rel="apple-touch-icon" href="/static/favicon/apple-touch-icon-180x180.png">
+
+    <link color="#e52037" rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg">
+
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-TileImage" content="/static/favicon/mstile-144x144.png">
+    <meta name="msapplication-square70x70logo" content="/static/favicon/mstile-70x70.png">
+    <meta name="msapplication-square150x150logo" content="/static/favicon/mstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/static/favicon/mstile-310x310.png">
+    <meta name="msapplication-square310x310logo" content="/static/favicon/mstile-310x150.png">
+    <meta name="application-name" content="МебелЯ">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#28a884">
+    <meta name="msapplication-TileColor" content="#28a884">
+    <meta name="theme-color" content="#28a884">
+
+
+    <!-- Yandex.Metrika counter -->
+    <script>
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(88981937, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <!-- /Yandex.Metrika counter -->
+
+</head>
+
+<body style="padding: 0;">
+    <span id="top"></span>
+
+    {% block header %}
+    {% endblock header %}
+
+    {% block slider %}
+    {% endblock slider %}
+    {% block main_content %}
+    {% endblock main_content %}
+
+    {% block footer %}
+    {% endblock footer %}
+
+    <script src="/static/js/bootstrap.js"></script>
+</body>
+</html>

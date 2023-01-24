@@ -1,0 +1,32 @@
+{% extends 'todo/footer.html' %}
+{% load crispy_forms_tags %}
+
+{% block main_content %}
+<div class="container border shadow-sm rounded p-4 bg-light bg-gradient mb-5 mt-5" id="content">
+    <h1>Добавление нового проекта</h1>
+    <form id="post_form" method="post" action="" enctype="multipart/form-data">
+
+
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+        {% endfor %}
+
+        {{ form|crispy }}
+
+        <div class="mb-3 border p-3">
+            <h5 class="form-label">Фото Альбом</h5>
+            {% for form in album %}
+            {{ form }}
+            {% endfor %}
+        </div>
+
+        <br>
+
+        <div class="d-grid gap-2">
+            <a href="/posts" class="btn btn-primary">Отмена</a>
+            <input type="submit" name="" value="Схранить проект" class="btn btn-secondary">
+        </div>
+    </form>
+</div>
+{% endblock main_content %}

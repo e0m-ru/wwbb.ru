@@ -1,0 +1,28 @@
+{% extends 'todo/footer.html' %}
+{% block main_content %}
+
+<div class="p-0 mt-0">
+    <div class="p-0 p-sm-2 rounded bg-white-75 shadow-sm">
+        <div class="">
+            <h1 class="h3 text-primary pt-0">Все фото
+            </h1>
+        </div>
+        <div class="row">
+            {% for prj in projects %}
+            <div class="col-12 col-sm-1 p-1">
+                <a class="p-o" href="{{ prj }}.jpg">
+                    <div class="card p-0" style="  
+                        height: 5rem;
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        background-size: 110% auto;
+                        background-image: url('{{prj}}.thumbnail')">
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock main_content %}

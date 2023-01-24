@@ -1,0 +1,56 @@
+{% extends 'todo/footer.html' %}
+{% block main_content %}
+
+<div class="container p-0">
+
+    <div class="p-1 p-sm-5 rounded bg-white-75 shadow-sm">
+        <div class="">
+            <h1 class="h3 text-primary">Наши проекты
+                {% if header %}
+                по тэгу - <button class="btn btn-secondary zoom">{{ header }}</button>
+                {% endif %}
+            </h1>
+
+            {% for i in tags %}
+            <a href="/tag/{{ i.slug }}" class="text-white btn-sm btn-secondary">{{ i }}</a>
+            {% endfor %}
+
+        </div>
+        <div class="row row-cols-md-4">
+            {% for prj in projects %}
+            
+            <a href="/post/{{prj.id}}" style="width: 100%;">
+                <div class="col ">
+                    <div class="card mb-1 mb-sm-4 zoom" style="  
+                height: 10rem;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: 110% auto;
+              
+                background-image: url('{{prj.thumbnail}}')">
+
+                        <div class="text-white p-1 card-footer" style="
+                        width: 100%;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        background-color: rgba(120, 194, 173, .5);
+                        ">
+                            <p style="margin-block-end: 0em;">{{prj.title}}</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% if user.is_authenticated %}
+
+        <div>
+            <a href="/create" class="btn btn-danger">Добавить пост</a>
+
+        </div>
+        {% endif%}
+
+    </div>
+</div>
+{% endblock main_content %}

@@ -1,0 +1,18 @@
+from django.shortcuts import render
+from django.db.models import Q
+from .CRUD_Posts import *
+import re
+from .img_handler import insert_thumbnail
+
+def search(request):
+    search_phrase=request.GET['search'].lower()
+    query = Project.objects.filter(public=True)
+    query_result = list(filter(lambda x: search_phrase in (x.title.lower() + x.description.lower() + x.tags.lower()), query))
+    query_result = insert_thumbnail(query_result)
+    context = {
+        'title': 'МебелЯ: Поиск',
+        'aaa': search_phrase,
+        'posts': query_result,
+        'description':'Поиск фотографий корпусной мебели на сайте wwbb.ru',
+    }
+    return render(request, 'todo/search.html', context)

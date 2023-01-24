@@ -1,0 +1,27 @@
+{% extends 'todo/footer.html' %}
+
+{% block slider %}
+<link rel="stylesheet" href="static/css/slick.css">
+<link rel="stylesheet" href="static/css/slick-theme.css">
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/slick.js"></script>
+
+<div class="slider">
+  <div class=""><img src="/static/img/slider/slide_03.jpg" width="100%"></div>
+  <div class=""><img src="/static/img/slider/slide_035.jpg" width="100%"></div>
+  <div class=""><img src="/static/img/slider/slide_04.jpg" width="100%"></div>
+
+</div>
+<script type="text/javascript">
+$('.slider').slick({
+  dots: true,
+  infinite: true,
+  slidesToShow: 1,
+  adaptiveHeight: true,
+  arrows: true,
+  speed: 500,
+  fade: true,
+  cssEase: 'linear'
+});
+</script>
+{% endblock slider %}

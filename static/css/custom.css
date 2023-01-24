@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
+.zoom {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    transition-duration: 0.5s
+}
+
+.zoom:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 5px rgba(127, 127, 127, 0.5);
+    /* transform: scale(1.05); */
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    transition-duration: 0.5s
+}
+
+p {
+    /* text-indent: 1.5rem; */
+    text-align: justify;
+}
+
+#to_top {
+    position: fixed;
+    bottom: 1rem;
+    right: 0;
+    padding: 1rem;
+}
+
+/* ----------SELECTION------------ */
+*::selection {
+    background-color: var(--primary);
+    color: #ffffff;
+  }
+  
+  *::-moz-selection {
+    background-color: var(--primary);
+    color: #ffffff;
+  }
+  
+  *::-webkit-selection {
+    background-color: var(--primary);
+    color: #ffffff;
+  }

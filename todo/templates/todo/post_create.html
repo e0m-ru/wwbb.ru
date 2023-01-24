@@ -1,0 +1,52 @@
+{% extends 'todo/footer.html' %}
+
+{% block main_content %}
+<div class="container mb-5 p-3 px-5 rounded bg-white-75 shadow-sm">
+    <h1 class="text-secondary h4">Добавление нового проекта</h1>
+    <!-- ------------- -->
+    <form id="post_form" method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+        {% endfor %}
+        <div class="mb-3">
+            <label for="id_title">Заголовок:</label>
+            <input class="form-control" type="text" name="title" maxlength="100" required="" id="id_title">
+        </div>
+        <div class="mb-3">
+            <label for="id_description">Описание:</label>
+            <textarea class="form-control" name="description" cols="40" rows="10" id="id_description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="id_tags">#Тэги:</label>
+            <input class="form-control" type="text" name="tags" maxlength="100" id="id_tags">
+        </div>
+        <div class="mb-3">
+            <label for="id_rating">Рейтинг (чем больше тем выше в выдаче):</label>
+            <input class="form-control" type="number" name="rating" id="id_rating">
+        </div>
+        <div class="mb-3 border p-3">
+            <h5 class="form-label">Фото Альбом</h5>
+            <input class="form-control" type="file" name="image" multiple="" accept="image/*" required="" id="id_image">
+        </div>
+        <div class="mb-3">
+            <input class="" type="checkbox" name="public" id="id_public" checked="">
+            <label for="id_public">Опубликован:</label>
+        </div>
+        <div class="d-grid gap-2">
+            <a href="/posts" class="btn btn-primary">Отмена</a>
+            <input class="btn btn-secondary" type="submit" name="" value="Схранить проект" class="btn btn-secondary">
+        </div>
+    </form>
+<hr>
+    <!-- ------------- -->
+
+    <div class="mb-3 border p-3">
+        <h5 class="form-label">Фото Альбом</h5>
+        {% for form in album %}
+        {{ form }}
+        {% endfor %}
+    </div>
+</div>
+{% endblock main_content %}
