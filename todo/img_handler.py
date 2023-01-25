@@ -3,11 +3,12 @@ from PIL import Image
 import os
 from .models import Project
 from random import choice
-PHOTO_PATH = '/home/v/vjnautils/todo/public_html/media/photos/'
+from djsite.settings import BASE_DIR, MEDIA_ROOT
+PHOTO_PATH = f"{os.path.join(MEDIA_ROOT,'photos')}"
 
 
-def collect_album(post_id):
-    album_lst = os.listdir(f'{PHOTO_PATH}{post_id}/')
+def collect_album(id):
+    album_lst = os.listdir(os.path.join(PHOTO_PATH,str(id)))
     album_lst = set(map(lambda x: os.path.splitext(x)[0], album_lst))
     return album_lst
 
@@ -34,7 +35,7 @@ def crop_center(pil_img):
 def img_handler(instance, id, s):
     db_Obj = Project.objects.get(id=id)
     img_name = f'{s}_{id}'
-    album_dir = f'{PHOTO_PATH}{id}'
+    album_dir = os.path.join(PHOTO_PATH, str(id))
     img_path = f'{album_dir}/{img_name}'
 
     with open(img_path+'.jpg', 'wb+') as destination:
