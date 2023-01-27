@@ -1,6 +1,5 @@
 {% extends 'todo/footer.html' %}
 {% block main_content %}
-<script src="/static/js/lightbox.js"></script>
 
 <div class="container p-2 p-sm-5 rounded bg-white-75 shadow-sm">
     <h1 class="text-primary h3">{{ project.title }}</h1>
@@ -9,17 +8,14 @@
     <div class="row row-cols-auto text-center">
         {% for img in album %}
         <div class="col-3 col-sm mb-1">
-            <!-- Button trigger modal -->
-
-            <!-- <img src='/media/photos/{{ project.id }}/{{ img }}.thumbnail' alt="{{ project.title }}" class="img-fluid zoom" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal_{{ img }}"/> -->
-            <img src="/media/photos/{{ project.id }}/{{ img }}.thumbnail" alt="{{ project.title }}" class="img-fluid zoom" style="cursor: pointer;" onclick="popup('/media/photos/{{ project.id }}/{{ img }}.jpg')">
+            <img src="/media/photos/{{ project.id }}/{{ img }}.thumbnail" alt="{{ project.title }}" class="img-fluid zoom" style="cursor: pointer;" onclick="popup('{{ img }}')">
         </div>
         {% endfor %}
     </div>
 
     <!-- TAGS -->
     <div class="mt-3">
-        <span class="">теги:&nbsp;</span>
+        <span >теги:&nbsp;</span>
         {% for i in tags %}
         <a href="/tag/{{ i }}" class="btn btn-sm btn-outline-secondary ">{{ i }}</a>
         {% endfor %}
@@ -37,14 +33,17 @@
 </div>
 
 
-
 <div id="lightbox" class="hidden">
-    <div class="center">
-        <span class="lb_ui_nav top_right" onclick="hide()">закрыть</span>
-        <!-- <span class="lb_ui_nav bottom_left" onclick="lb_prev()">&lt;&lt; назад</span>
-        <span class="lb_ui_nav bottom_right" onclick="lb_next()">вперед &gt;&gt;</span> -->
-        <img id="pic" class="ver center" src="img/2.JPG">        
+    {% for img in album %}
+        <img id="{{ img }}" class="transparent" src='/media/photos/{{ project.id }}/{{ img }}.jpg'>        
+    {% endfor %}
+    <div id="lb_nav">
+        <span id="nav_prev" >&lt;</span>
+        <span id="nav_close">закрыть</span>
+        <span id="nav_next" >&gt;</span>
     </div>
 </div>
-    
+
+<script src="/static/js/lightbox.js"></script>
+
 {% endblock main_content %}

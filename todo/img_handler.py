@@ -8,7 +8,7 @@ PHOTO_PATH = f"{os.path.join(MEDIA_ROOT,'photos')}"
 
 
 def collect_album(id):
-    album_lst = os.listdir(os.path.join(PHOTO_PATH,str(id)).replace('\\', '/'))
+    album_lst = os.listdir(os.path.join(PHOTO_PATH,str(id)))
     album_lst = set(map(lambda x: os.path.splitext(x)[0], album_lst))
     return album_lst
 
