@@ -27,6 +27,10 @@ p {
     padding: 1rem;
 }
 
+header {
+  z-index: 100;
+}
+
 /* ----------SELECTION------------ */
 *::selection {
     background-color: var(--primary);
