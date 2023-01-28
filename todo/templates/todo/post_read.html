@@ -5,9 +5,9 @@
     <h1 class="text-primary h3">{{ project.title }}</h1>
 
     <p>{{ project.description }}</p>
-    <div class="row row-cols-auto text-center">
+    <div class="row text-center">
         {% for img in album %}
-        <div class="col-3 col-sm mb-1">
+        <div class="">
             <img src="/media/photos/{{ project.id }}/{{ img }}.thumbnail" alt="{{ project.title }}" class="img-fluid zoom" style="cursor: pointer;" onclick="popup('{{ img }}')">
         </div>
         {% endfor %}
