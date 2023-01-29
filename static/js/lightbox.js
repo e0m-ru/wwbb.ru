@@ -10,6 +10,7 @@ function popup(img) {
     LB.className = 'shown'
     img = document.getElementById(img)
     img.className = 'visible'
+    
 }
 
 function hide() {
@@ -28,6 +29,9 @@ function next() {
         img.className = 'transparent'
         n_img.className = 'visible';
     }
+    else {
+        hide()
+    }
 }
 
 function prev() {
@@ -36,5 +40,8 @@ function prev() {
     if (img != document.getElementById('lightbox').firstElementChild) {
         img.className = 'transparent'
         n_img.className = 'visible'
+    }
+    else {
+        hide()
     }
 }
