@@ -33,16 +33,30 @@ header {
 
 /* ----------SELECTION------------ */
 *::selection {
-    background-color: var(--primary);
-    color: #ffffff;
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+*::-moz-selection {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+*::-webkit-selection {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.post_images {
+  cursor: pointer;
+  width: 15%;
+  margin: 0.1rem;
+}
+
+@media (max-width: 767.98px) {
+  .post_images {
+    cursor: pointer;
+    width: 30%;
+    margin: 0.1rem;
   }
-  
-  *::-moz-selection {
-    background-color: var(--primary);
-    color: #ffffff;
-  }
-  
-  *::-webkit-selection {
-    background-color: var(--primary);
-    color: #ffffff;
-  }
+}
