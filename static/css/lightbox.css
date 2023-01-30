@@ -1,73 +1,107 @@
-.ver {
-    max-width: 100%;
-    max-height: 100%;
-    vertical-align: middle;
-}
-
-.hor {
-    width: 100%;
-}
-
-.center {
-    justify-content: center; 
-    align-content: center; 
-    justify-items: center; 
-    align-items: center; 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.hidden{
-    display: none;
+#lightbox {
+    display: flex;
+    justify-content: center;
     position: fixed;
     overflow: hidden;
-    top: -100vh;
-    width: 100%;
-    height: 100%;
-    background: var(--primary);
-    transition: all .5s ;
+    width: 100vw;
+    background: var(--primary-75);
+    top: 0;
+    max-height: 100vh;
+}
+
+
+@media screen and (orientation: landscape) {
+    #lightbox > img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 100%;
+    }
+  }
+
+@media screen and (orientation: portrait) {
+    #lightbox > img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+    }
+}
+
+#lightbox > img {
+    transition: all .5s ; 
+    max-height: 100vh;
+    max-width: 100vw;
+    width: auto;
+}
+
+#lightbox > img.transparent {
     opacity: 0;
+    transition: all .5s 
+}
+#lightbox > img.visible {
+    opacity: 1;
+    transition: all .5s 
+}
+
+.hidden {
+    opacity: 0;
+    height: 0vh;
+    transition: all .5s;
 }
 
 .shown {
-    position: fixed;
-    overflow: hidden;
-    top: 0;
-    background: var(--primary);
     opacity: 1;
+    height: 100vh;
     transition: all .5s ;
 }
 
-#lightbox > div {
-    height: 100vh;
+#lb_nav {
+    color: white;
     width: 100vw;
+    position: absolute;
+    top: 0;
 }
 
-.lb_ui_nav {
+
+
+/* #lb_nav > * {
+    margin: 1rem;
+    padding: 0 10px 5px 10px ;
+    cursor: pointer;
     color: white;
     background-color: var(--secondary);
     border-radius: 3px;
-    /* border: solid 1px white; */
+} */
+
+
+
+#nav_prev, #nav_next {
+    height: 100vh;
+    width: 2rem;
     cursor: pointer;
-    position: fixed;
-    margin: 1rem;
-    padding: 0 10px 5px 10px ;
+    position: absolute ;
+    top: 0;
 }
 
-.top_right{
-    top: 0;
-    right: 0;
+#nav_prev:hover, #nav_next:hover {
+    background-color: rgba(0,0,0,0.1);
 }
-.top_left{
-    top: 0;
+#nav_prev {
     left: 0;
 }
-.bottom_right{
-    bottom: 0;
+#nav_next
+{
     right: 0;
+    transform: rotate(180deg);
 }
-.bottom_left{
-    bottom: 0;
-    left: 0;
+
+#nav_close {
+    color: #FFFFFF;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    position: absolute ;
+    right: 1rem;
+    top: 1rem;
 }
