@@ -24,6 +24,5 @@ urlpatterns = [
     path('tag/<str:tag>', views.posts_by_tag, name="tag"),
     path('image', views.image_gallery, name='image_gallery'),
     # In all other cases
-    path('', views.main_page),
-    
+    path('', views.main_page),    
 ]
