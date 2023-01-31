@@ -36,7 +36,7 @@ def img_handler(instance, id, s):
     db_Obj = Project.objects.get(id=id)
     img_name = f'{s}_{id}'
     album_dir = os.path.join(PHOTO_PATH, str(id))
-    img_path = f'{album_dir}/{img_name}'
+    img_path = f'{album_dir}\{img_name}'.replace('\\','/')
 
     with open(img_path+'.jpg', 'wb+') as destination:
         for chunk in instance.chunks():
