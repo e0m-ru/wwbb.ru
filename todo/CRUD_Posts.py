@@ -91,10 +91,9 @@ def post_delete(request, post_id):
 def posts(request):
     all_posts = Project.objects.filter(public=True)
     insert_thumbnail(all_posts)
-    all_posts = random.choices(all_posts, k=12)
     context = {
         'title': 'примеры работ',
-        'projects': all_posts,
+        'projects': random.shuffle(all_posts),
         'description': 'Список проектов производства корпусной мебели wwbb.ru',
     }
     return render(request, 'todo/posts.html', context)
@@ -109,6 +108,7 @@ def posts_by_tag(request, tag):
         tags = map(lambda x: x.strip(), tags)
         if tag.lower() in tags:
             by_tags.append(i)
+    random.shuffle(by_tags)
     context = {
         'title': 'МебелЯ: ' + str(tag),
         'header': str(tag),
