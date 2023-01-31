@@ -11,7 +11,7 @@ class Project(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     album = models.TextField(default='',null=True, blank=True)
     class Meta:
-        ordering = ['-rating']
+        ordering = ['id']
 
     def __str__(self):
         return str(self.id) + ' ' + self.title
