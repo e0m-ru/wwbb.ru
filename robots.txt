@@ -1,0 +1,7 @@
+User-agent: * #указывает, для каких роботов установлены директивы
+Disallow: /admin/ # запрещает ссылки из панели администратора
+Disallow: /profile
+Disallow: /login
+Disallow: /create
+Disallow: /update/
+Sitemap: https://wwbb.ru/sitemap.txt # указывает роботу на файл Sitemap для сайта
