@@ -28,7 +28,7 @@ def feedback(request):
     return render(request, 'todo/feedback.html', context)
 
 def all_photos(request):
-    dr = '/home/v/vjnautils/todo/public_html/media/photos/'
+    dr = '/home/e0m/wwbb.ru/media/photos/'
     all = os.listdir(dr)
     all_ph = []
     for i in all:

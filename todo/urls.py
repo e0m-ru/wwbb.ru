@@ -7,7 +7,7 @@ urlpatterns = [
     re_path('search', views.search, name="search"),
     
     # CRUD Project urls
-    path('posts', views.posts, name='posts'),
+    path('posts', views.all_photos, name='posts'),
     path('photo', views.all_photos, name='photo'),
     path('create', views.post_create, name='post_create'),
     path('update/<int:post_id>', views.post_update, name='post_update'),
