@@ -14,7 +14,7 @@ def main_page(request):
     example_02 = random.choices(all_posts, k=4)
     example_03 = random.choices(all_posts, k=4)
     context = {
-        'title': 'МебелЯ: Главная',
+        'title': 'МебелЯ',
         'example_01': example_01,
         'example_02': example_02,
         'example_03': example_03,
