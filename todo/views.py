@@ -4,6 +4,7 @@ from django.db.models import Q
 from .comments import *
 from .search import search
 import re
+from djsite.settings import MEDIA_ROOT
 
 def main_page(request):
     all_posts = Project.objects.filter(public=True)
@@ -28,7 +29,7 @@ def feedback(request):
     return render(request, 'todo/feedback.html', context)
 
 def all_photos(request):
-    dr = '/home/e0m/wwbb.ru/media/photos/'
+    dr = MEDIA_ROOT+'/photos/'
     all = os.listdir(dr)
     all_ph = []
     for i in all:
