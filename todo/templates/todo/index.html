@@ -31,11 +31,11 @@
     </Section>
 
     <!-- EXAMPLES 01-->
-    <div class="p-sm-2 row row-cols-md-4 row-cols-sm-2">
+    <div class="p-1 bg-white-75 rounded row row-cols-md-4 row-cols-sm-2">
         {% for prj in example_01 %}
         <a href="/post/{{prj.id}}" style="width: 100%;">
             <div class="col">
-                <div class="card mb-1 assa zoom" style="  
+                <div class="card my-2 assa zoom" style="  
                 background-image: url('{{prj.thumbnail}}')">
                     <div class="text-white p-1 card-footer foo">
                         <p style="margin-block-end: 0em;">{{prj.title}}</p>
@@ -80,14 +80,13 @@
     </Section>
 
     <!-- EXAMPLES 02-->
-    <div class="p-sm-2 row row-cols-md-4 row-cols-sm-2">
+    <div class="p-1 bg-primary rounded row row-cols-md-4 row-cols-sm-2">
         {% for prj in example_02 %}
 
         <a href="/post/{{prj.id}}" style="width: 100%;">
             <div class="col">
-                <div class="card mb-1 mb-sm-4 assa zoom" style="  
+                <div class="card my-2 assa zoom" style="  
                 background-image: url('{{prj.thumbnail}}')">
-
                     <div class="text-white p-1 card-footer foo">
                         <p style="margin-block-end: 0em;">{{prj.title}}</p>
                     </div>
@@ -124,12 +123,12 @@
     </Section>
 
     <!-- EXAMPLES 03-->
-    <div class="p-sm-2 row row-cols-md-4 row-cols-sm-2">
+    <div class="p-1 bg-secondary rounded row row-cols-md-4 row-cols-sm-2">
         {% for prj in example_03%}
 
         <a href="/post/{{prj.id}}" style="width: 100%;">
             <div class="col">
-                <div class="card mb-1 mb-sm-4 assa zoom" style="background-image: url('{{prj.thumbnail}}')">
+                <div class="card my-2 assa zoom" style="background-image: url('{{prj.thumbnail}}')">
                     <div class="text-white p-1 card-footer foo">
                         <p style="margin-block-end: 0em;">{{prj.title}}</p>
                     </div>

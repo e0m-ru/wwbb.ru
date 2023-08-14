@@ -5,38 +5,35 @@
 <link rel="stylesheet" href="/static/css/glightbox.css" />
 
 
-<div class="container p-2 p-sm-5 rounded bg-white-75 shadow-sm">
-    <h1 class="text-primary h3">{{ project.title }}</h1>
+<div class="container rounded bg-white-75 shadow-sm">
+    <h1 class="m-0 text-primary h3" style="display: inline-block;">{{ project.title }}</h1>
 
-    <p>{{ project.description }}</p>
-    <div class="">
+    {% if project.description %}<p>{{ project.description }}</p>{% endif %}
+    <div class="row">
         {% for img in album %}
-        <a href="/media/photos/{{ project.id }}/{{ img }}.jpg" class="glightbox">
-            <img src="/media/photos/{{ project.id }}/{{ img }}.thumbnail" alt="wwbb.ru image" />
-        </a>            
+        <a href="/media/photos/{{ project.id }}/{{ img }}.jpg"
+            class="glightbox p-1 zoom col-6 col-sm-4 col-lg-3 col-xl-2 col-xxl-1">
+            <img src="/media/photos/{{ project.id }}/{{ img }}.thumbnail" style="width: 100%;" alt="wwbb.ru image" />
+        </a>
+
         {% endfor %}
     </div>
-
     <!-- TAGS -->
-    <div class="mt-3">
-        <span >теги:&nbsp;</span>
-        {% for i in tags %}
-        <a href="/tag/{{ i }}" class="btn btn-sm btn-outline-secondary ">{{ i }}</a>
-        {% endfor %}
-    </div>
-    <hr>
-    <div class="container">
-        <div class="row justify-content-between">
-            <a class="btn btn-outline-primary col col-sm-3 p-1 mx-1" href="/post/{{prev}}">&#60;&#60; назад</a>
-            {% if user.is_authenticated %}
-            <a class="btn btn-danger col col-sm-3 p-1 mx-1" href="/update/{{ project.id }}">изменить</a>
-            {% endif %}
-            <a class="btn btn-outline-primary col col-sm-3 p-1 mx-1" href="/post/{{next}}">вперёд &#62;&#62;</a>
-        </div>
-    </div>
-</div>
-<script src="/static/js/glightbox.js"></script>
+    {% for i in tags %}
+    <a href="/tag/{{ i }}" class="btn btn-sm btn-outline-secondary ">{{ i }}</a>
+    {% endfor %}
 
+
+    <div class="py-2 row justify-content-between">
+        {% if user.is_authenticated %}
+        <a class="btn btn-danger col col-sm-3 p-1 mx-1" href="/update/{{ project.id }}">изменить</a>
+        {% endif %}
+        <a class="btn btn-outline-primary" href="/post/{{next}}">ещё&#31;пример&#31;&#62;&#62;</a>
+    </div>
+
+</div>
+
+<script src="/static/js/glightbox.js"></script>
 <script>
     var lightbox = GLightbox();
     lightbox.on('open', (target) => {
@@ -97,5 +94,5 @@
     });
     exampleApi.open(); */
 </script>
-        
-        {% endblock main_content %}
+
+{% endblock main_content %}
