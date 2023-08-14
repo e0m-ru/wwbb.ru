@@ -74,7 +74,10 @@ header {
   left: 0;
   background-color: rgba(120, 194, 173, .5);
 }
-/* 
-.ginner-container {
-  background-color: var(--primary);
-} */
+
+.navbar-toggler{
+  padding: 10px;
+}
+.navbar-toggler-icon {
+  width: 1.5em;
+}
