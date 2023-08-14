@@ -8,11 +8,16 @@ from djsite.settings import MEDIA_ROOT
 
 def main_page(request):
     all_posts = Project.objects.filter(public=True)
+    
     insert_thumbnail(all_posts)
-    all_posts = random.choices(all_posts, k=4)
+    example_01 = random.choices(all_posts, k=4)
+    example_02 = random.choices(all_posts, k=4)
+    example_03 = random.choices(all_posts, k=4)
     context = {
         'title': 'МебелЯ: Главная',
-        'projects': all_posts,
+        'example_01': example_01,
+        'example_02': example_02,
+        'example_03': example_03,
         'description':'Сайт производителя корпусной мебели на заказ https://wwbb.ru.',
     }
     return render(request, 'todo/index.html', context)

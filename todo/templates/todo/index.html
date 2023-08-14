@@ -3,7 +3,7 @@
 {% block main_content %}
 <main class="container">
     <!-- ITEM 1 -->
-    <Section class="rounded bg-white-75 shadow-sm">
+    <Section class="p-2 rounded bg-white-75 shadow-sm">
         <div class="col-sm">
             <h1 class="text-primary h3">ПРОИЗВОДСТВО <span class="text-secondary">МЕБЕЛИ</span></h1>
             <h2 class="h5">Мы предлагаем полный цикл производства корпусной и встроенной мебели на заказ. Благодаря
@@ -30,13 +30,12 @@
         </ul>
     </Section>
 
-    <!-- EXAMPLES -->
-    <div class="row row-cols-md-4 row-cols-sm-2">
-        {% for prj in projects %}
-
+    <!-- EXAMPLES 01-->
+    <div class="p-sm-2 row row-cols-md-4 row-cols-sm-2">
+        {% for prj in example_01 %}
         <a href="/post/{{prj.id}}" style="width: 100%;">
             <div class="col">
-                <div class="card mb-1 assa" style="  
+                <div class="card mb-1 assa zoom" style="  
                 background-image: url('{{prj.thumbnail}}')">
                     <div class="text-white p-1 card-footer foo">
                         <p style="margin-block-end: 0em;">{{prj.title}}</p>
@@ -49,7 +48,7 @@
 
     <!-- ITEM 2 -->
 
-    <Section class="rounded bg-white-75">
+    <Section class="p-2 rounded bg-white-75">
         <div class="col-sm">
             <h1 class="text-primary h3">РАЗРАБОТКА <span class="text-secondary">ПРОЕКТА</span></h1>
             <h2 class="h5">Мы предлагаем изготовление мебели на заказ с учетом индивидуальных размеров и на основе
@@ -80,13 +79,13 @@
         </div>
     </Section>
 
-    <!-- EXAMPLES -->
-    <div class="row row-cols-md-4 row-cols-sm-2">
-        {% for prj in projects %}
+    <!-- EXAMPLES 02-->
+    <div class="p-sm-2 row row-cols-md-4 row-cols-sm-2">
+        {% for prj in example_02 %}
 
         <a href="/post/{{prj.id}}" style="width: 100%;">
             <div class="col">
-                <div class="card mb-1 mb-sm-4 assa" style="  
+                <div class="card mb-1 mb-sm-4 assa zoom" style="  
                 background-image: url('{{prj.thumbnail}}')">
 
                     <div class="text-white p-1 card-footer foo">
@@ -99,7 +98,7 @@
     </div>
 
     <!-- ITEM 3-->
-    <Section class="row my-5 p-1 p-sm-5 rounded bg-white-75 shadow-sm">
+    <Section class="p-2 rounded bg-white-75 shadow-sm">
         <div class="col-sm">
             <h1 class="text-primary h3">ДОСТАВКА <span class="text-secondary">И СОБОРКА</span></h1>
             <h2 class="h5">Мы специализируемся на производстве мебели для гостиных и спален, кафе и ресторанов, кухонь и
@@ -118,18 +117,19 @@
                 <p>Важно отметить, что вы оплачиваете свой заказ только после того, как мы установим его для вас. Это
                     гарантирует ваше полное удовлетворение результатом нашей работы.</p>
             </div>
-            <p>Мы готовы предложить вам высокое качество, надежность и профессионализм в каждом аспекте нашей работы,
-                чтобы создать мебель, которая превзойдет ваши ожидания.</p>
+            <div class="col-sm">
+            Мы готовы предложить вам высокое качество, надежность и профессионализм в каждом аспекте нашей работы,
+                чтобы создать мебель, которая превзойдет ваши ожидания.</div>
         </div>
     </Section>
 
-    <!-- EXAMPLES -->
-    <div class="row row-cols-md-4 row-cols-sm-2">
-        {% for prj in projects %}
+    <!-- EXAMPLES 03-->
+    <div class="p-sm-2 row row-cols-md-4 row-cols-sm-2">
+        {% for prj in example_03%}
 
         <a href="/post/{{prj.id}}" style="width: 100%;">
             <div class="col">
-                <div class="card mb-1 mb-sm-4 assa" style="background-image: url('{{prj.thumbnail}}')">
+                <div class="card mb-1 mb-sm-4 assa zoom" style="background-image: url('{{prj.thumbnail}}')">
                     <div class="text-white p-1 card-footer foo">
                         <p style="margin-block-end: 0em;">{{prj.title}}</p>
                     </div>
@@ -139,22 +139,9 @@
         {% endfor %}
     </div>
 
-    <!-- HELLO -->
-    <Section class="mb-5 p-2 p-sm-5 rounded bg-white-75 shadow-sm">
-        <div>
-            <h3 class="text-primary">Давайте знакомиться. Меня зовут Павел.</h3>
-            <ul>
-                <li>С 2001 года мы занимаемся изготовлением и установкой мебели.</li>
-                <li>С 2018 года нами было принято решение закупить станки, арендовать цех и работать на себя.</li>
-            </ul>
-            <p>Мы сами приезжаем на замер, сами изготавливаем на своих станках и сами приезжаем к вам на монтаж мебели.
-                Благодаря этому, вы получите именно то, что вам нужно.</p>
-            <p>Наша команда - это две бригады по два человека. Мы настроены на одну цель — поставить вам красивую,
-                качественную и недорогую мебель. Что бы вы могли, без малейшего сомнения, рекомендовать наши услуги
-                вашим друзьям и близким.</p>
-        </div>
-    </Section>
+
 </main>
+
 <!-- END OF CONTENT -->
 
 {% endblock main_content %}
