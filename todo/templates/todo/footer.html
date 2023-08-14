@@ -3,7 +3,7 @@
 {% block footer %}
 
 <div class="bg-white-75">
-  <footer class="py-3 my-4 container">
+  <footer class="py-0 my-4 container">
     <div class="d-flex flex-wrap justify-content-between align-items-center">
       <h5>
         <a class="nav-link btn btn-secondary text-white m-1" aria-current="page" href="/comments">Отзывы</a>
@@ -28,7 +28,7 @@
       {% else %}
       <a class="nav-item" href="{% url 'login' %}">Вход</a>
       {% endif %}
-      <h5 class="text-primary">© 2022 Производство мебели <a href="/">wwbb.ru</a></h5>
+      <a href="/"><h5 class="text-primary">© 2023 Производство мебели</h5></a>
 
     </div>
   </footer>
