@@ -37,20 +37,20 @@ def post_create(request):
 
 
 def post_read(request, post_id):
-    all_posts = [i.id for i in Project.objects.all()]
-    db_Obj = Project.objects.get(id=post_id)
-    ind = all_posts.index(post_id)
+    all_objects = Project.objects.all()
+    db_Obj = all_objects.get(id=post_id)
     tags = db_Obj.tags.lower().split(',')
-    tags = map(lambda x: x.strip(), tags)
+    tags = [*map(lambda x: x.strip(), tags)]
     album = collect_album(post_id)
+    a = Project.objects.filter(tags__contains=tags[0])[:10]
+    insert_thumbnail(a)
     context = {
         'title': db_Obj.title,
         'project': db_Obj,
-        'prev': all_posts[ind-1 if ind >= 1 else len(all_posts)-1],
-        'next': all_posts[ind+1 if ind < len(all_posts)-1 else 0],
         'tags': tags,
         'album': album,
         'description': f'Проект {db_Obj.title} wwbb.ru ',
+        'a': a,
     }
     return render(request, 'todo/post_read.html', context)
 
