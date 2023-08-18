@@ -42,7 +42,7 @@ def post_read(request, post_id):
     tags = db_Obj.tags.lower().split(',')
     tags = [*map(lambda x: x.strip(), tags)]
     album = collect_album(post_id)
-    a = Project.objects.filter(tags__contains=tags[0])[:10]
+    a = Project.objects.filter(tags__contains=tags[0].capitalize())
     insert_thumbnail(a)
     context = {
         'title': db_Obj.title,
