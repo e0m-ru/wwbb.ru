@@ -5,6 +5,6 @@ from .config import SERVICE_ACCESS_KEY, PROTECTED_KEY
 import requests
 import json
 
-locale.setlocale(locale.LC_TIME, "ru_RU")
+# locale.setlocale(locale.LC_TIME, "ru_RU")
 
 requests.get(f'https://oauth.vk.com/authorize?client_id=1&group_ids=1,123456&display=page&redirect_uri=http://example.com/callback&scope=messages&response_type=token&v=5.131')
