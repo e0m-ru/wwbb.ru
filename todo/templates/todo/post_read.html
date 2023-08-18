@@ -14,6 +14,7 @@
         </a>
         {% endfor %}
     </div>
+
     <!-- TAGS -->
     {% for i in tags %}
     <a href="/tag/{{ i }}" class="btn btn-sm btn-outline-secondary ">{{ i }}</a>
@@ -25,6 +26,7 @@
         <a class="btn btn-danger col col-sm-3 p-1 mx-1" href="/update/{{ project.id }}">изменить</a>
         {% endif %}
     </div>
+
     <h4>Похожие проекты:</h4>
     <div class="row">
         {% for prj in a %}

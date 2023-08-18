@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     path('feedback', views.feedback),
+    path('vk', views.vk_api),
     re_path('search', views.search, name="search"),
     
     # CRUD Project urls

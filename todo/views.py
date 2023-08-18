@@ -5,6 +5,7 @@ from .comments import *
 from .search import search
 import re
 from djsite.settings import MEDIA_ROOT
+from .vk import vk_api
 
 def main_page(request):
     all_posts = Project.objects.filter(public=True)
@@ -58,3 +59,11 @@ def image_gallery(request):
         'description':'Сайт производителя корпусной мебели на заказ https://wwbb.ru.',
     }
     return render(request, 'todo/image_gallery.html', context)    
+
+def vk_api(request):
+    context = {
+        'title': 'МебелЯ: VK API',
+        'description':'Сайт производителя корпусной мебели на заказ https://wwbb.ru.',
+        'posts': [],
+    }
+    return render(request, 'todo/vk_wall.html', context)    
