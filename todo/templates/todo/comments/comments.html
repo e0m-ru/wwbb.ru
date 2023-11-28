@@ -1,9 +1,31 @@
 {% extends 'todo/footer.html' %}
 {% block main_content %}
-<style>
-.badge {
-	max-width: 100% !important;
-}
-</style>
-<div class="container" style="width:100% !important;height:640px;overflow:hidden;position:relative;"><iframe style="width:100% !important;height:100%;border:1px solid #e6e6e6;border-radius:8px;box-sizing:border-box" src="https://yandex.ru/maps-reviews-widget/14645750242?comments"></iframe><a href="https://yandex.ru/maps/org/mebelya/14645750242/" target="_blank" style="box-sizing:border-box;text-decoration:none;color:#b3b3b3;font-size:10px;font-family:YS Text,sans-serif;padding:0 20px;position:absolute;bottom:8px;width:100%;text-align:center;left:0;overflow:hidden;text-overflow:ellipsis;display:block;max-height:14px;white-space:nowrap;padding:0 16px;box-sizing:border-box">Мебеля на карте Москвы и Московской области — Яндекс Карты</a></div>
+<div class="container" id="content">
+    <h2 class="h3 text-primary">Отзывы наших клиентов</h2>
+    
+    <div class="row row-cols-1 g-5 p-3">
+        {% for com in comments %}
+        <div class="card col mb-4">
+            <small class="text-primary" style="font-weight: 100 ;">{{ com.created_at }}</small>
+            <div class="card-body">
+                <h5 class="card-title">{{ com.name }}</h5>
+                <p class="card-text">{{ com.comment }}</p>
+                {% if user.is_authenticated %}
+                <a href="/update_comment/{{ com.id }}" class="btn btn-primary btn-sm">редактировать</a>
+                {% endif %}
+            </div>
+        </div>
+        
+        {% endfor %}
+        <a href="/add_comment" class="btn btn-secondary">Добавить отзыв</a>
+    </div>
+</div>
 {% endblock main_content %}
+
+<div>
+
+    <h2></h2>
+    <p>{{ com.created_at }}</p>
+    <p></p>
+
+</div>
