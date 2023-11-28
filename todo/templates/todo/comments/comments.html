@@ -2,30 +2,30 @@
 {% block main_content %}
 <div class="container" id="content">
     <h2 class="h3 text-primary">Отзывы наших клиентов</h2>
-    
-    <div class="row row-cols-1 g-5 p-3">
-        {% for com in comments %}
-        <div class="card col mb-4">
-            <small class="text-primary" style="font-weight: 100 ;">{{ com.created_at }}</small>
-            <div class="card-body">
-                <h5 class="card-title">{{ com.name }}</h5>
-                <p class="card-text">{{ com.comment }}</p>
+    <div class="row p-0">
+        <div class="col-12 col-lg-6">
+            {% for com in comments %}
+            <div class="card m-2">
+                <div class="">
+                    <div class="card-body">
+                        <p>{{ com.comment }}</p>
+                        <p><small class="text-muted">{{ com.name }}</small></p>
+                        <p><small class="text-primary">{{ com.created_at }}</small></p>
+                    </div>
+                </div>
                 {% if user.is_authenticated %}
                 <a href="/update_comment/{{ com.id }}" class="btn btn-primary btn-sm">редактировать</a>
                 {% endif %}
             </div>
+
+            {% endfor %}
+            <a href="/add_comment" class="btn btn-secondary">Добавить отзыв</a>
         </div>
-        
-        {% endfor %}
-        <a href="/add_comment" class="btn btn-secondary">Добавить отзыв</a>
+
+        <div class="col-12 col-lg-6" style="height: 75vh;"><iframe
+                style="width:100%;height:100%;border:1px solid #e6e6e6;border-radius:8px;box-sizing:border-box"
+                src="https://yandex.ru/maps-reviews-widget/14645750242?comments"></iframe>
+        </div>
     </div>
 </div>
 {% endblock main_content %}
-
-<div>
-
-    <h2></h2>
-    <p>{{ com.created_at }}</p>
-    <p></p>
-
-</div>
