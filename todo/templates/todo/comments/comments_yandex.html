@@ -1,0 +1,18 @@
+{% extends 'todo/footer.html' %}
+{% block main_content %}
+<div class="container" style=";height:100vh;overflow:hidden;position:relative;">
+<iframe id='yandex-comments' style="width:100%;height:100%;border:1px solid #e6e6e6;border-radius:8px;box-sizing:border-box" 
+src="https://yandex.ru/maps-reviews-widget/14645750242?comments">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://mc.yandex.ru/">
+</iframe>
+</div>
+
+<script>
+const iframe = document.getElementById('yandex-comments');
+const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+const badgeElement = iframeDocument.querySelector('.badge');
+console.log(badgeElement);
+badgeElement.style.width = 'auto';
+</script>
+
+{% endblock main_content %}
