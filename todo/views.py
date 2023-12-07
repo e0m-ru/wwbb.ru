@@ -9,16 +9,14 @@ from .vk import vk_api
 
 def main_page(request):
     all_posts = Project.objects.filter(public=True)
-    
+    all_posts=list(all_posts)
+    all_posts.sort(reverse=True, key = lambda x:x.rating)
     insert_thumbnail(all_posts)
-    example_01 = random.choices(all_posts, k=4)
-    example_02 = random.choices(all_posts, k=4)
-    example_03 = random.choices(all_posts, k=4)
     context = {
         'title': 'МебелЯ',
-        'example_01': example_01,
-        'example_02': example_02,
-        'example_03': example_03,
+        'example_01': random.choices(all_posts, k=4),
+        'example_02': random.choices(all_posts, k=4),
+        'example_03': random.choices(all_posts, k=4),
         'description':'Сайт производителя корпусной мебели на заказ https://wwbb.ru.',
     }
     return render(request, 'todo/index.html', context)

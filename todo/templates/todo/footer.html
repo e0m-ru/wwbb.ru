@@ -6,12 +6,6 @@
   <footer class="py-0 my-4 container">
     <div class="d-flex flex-wrap justify-content-between align-items-center">
       <h5>
-        <a class="nav-link btn btn-secondary text-white m-1" aria-current="page" href="/comments">Отзывы</a>
-      </h5>
-      <h5>
-        <a class="nav-link btn btn-secondary text-white m-1" href="/feedback">Контакты</a>
-      </h5>
-      <h5>
         <a href="tel:+79257025995">
           <img src="/static/icons/telephone.svg" width="20" height="20">
           +7 925 702 59 95</a>
@@ -28,7 +22,9 @@
       {% else %}
       <a class="nav-item" href="{% url 'login' %}">Вход</a>
       {% endif %}
-      <a href="/"><h5 class="text-primary">© 2023 Производство мебели</h5></a>
+      <a href="/">
+        <h5 class="text-primary">© 2023 Производство мебели</h5>
+      </a>
 
     </div>
   </footer>

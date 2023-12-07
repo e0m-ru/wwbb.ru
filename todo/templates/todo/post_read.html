@@ -4,12 +4,16 @@
 <link rel="stylesheet" href="/static/css/glightbox.css" />
 
 <div class="container rounded bg-white-75 shadow-sm">
-    <h1 class="m-0 p-0 text-primary h3" style="display: inline-block;"><span class="badge badge-primary">{{ project.id }}</span> {{ project.title }} </h1>
-    {% if project.description %}<p>{{ project.description }}</p>{% endif %}
+    <h1 class="m-0 p-0 text-primary h3" style="display: inline-block;"><span class="badge badge-primary">
+            {{ project.id }}</span> {{ project.title }} </h1>
+    {% if user.is_authenticated %}
+    <a class="btn btn-danger" href="/update/{{ project.id }}">изменить</a>
+    {% endif %}
+    <p>{{ project.description }}</p>
+    <hr>
     <div class="row">
         {% for img in album %}
-        <a href="/media/photos/{{ project.id }}/{{ img }}.jpg"
-            class="glightbox p-1 zoom col-sm-3">
+        <a href="/media/photos/{{ project.id }}/{{ img }}.jpg" class="glightbox p-1 zoom col-sm-3">
             <img src="/media/photos/{{ project.id }}/{{ img }}.thumbnail" style="width: 100%;" alt="wwbb.ru image" />
         </a>
         {% endfor %}
@@ -20,18 +24,20 @@
     <a href="/tag/{{ i }}" class="btn btn-sm btn-outline-secondary ">{{ i }}</a>
     {% endfor %}
 
-
-    <div class="py-2 row justify-content-between">
-        {% if user.is_authenticated %}
-        <a class="btn btn-danger col col-sm-3 p-1 mx-1" href="/update/{{ project.id }}">изменить</a>
-        {% endif %}
-    </div>
-
     <h4>Похожие проекты:</h4>
-    <div class="row">
-        {% for prj in a %}
-        <a href="/post/{{prj.id}}" class="zoom col-4 col-sm-2 p-1 m-0">
-                <img src="{{prj.thumbnail}}" style="width: 100%;" alt="wwbb.ru image {{ project.description }}">
+    <div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6 row-cols-xl-12">
+        {% for prj in similar %}
+        <a href="/post/{{prj.id}}" style="width: 100%;">
+            <div class="col ">
+                <div class="card assa zoom" style=" background-image: url('{{prj.thumbnail}}')">
+                    <div class="text-white bg-primary-75 top">
+                        <b style="text-indent: 0;">{{prj.id}}</b>
+                    </div>
+                    <div class="text-white p-1 bg-primary-75 foo">
+                        <p style="text-indent: 0;">{{prj.title}}</p>
+                    </div>
+                </div>
+            </div>
         </a>
         {% endfor %}
     </div>

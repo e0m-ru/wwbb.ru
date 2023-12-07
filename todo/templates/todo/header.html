@@ -3,61 +3,63 @@
 
 <!-- NAVIGATION -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-  <!-- Logo, Title -->
-  <a class="navbar-brand" href="/">
-    <img src="/static/favicon/favicon_white.svg" height="50px">
-  </a>
-  <!-- <p class="text-white">{{ title }}</p > -->
-  
-  <!-- PHONE  -->
-  <a class="nav-link text-white" href="tel:+79257025995">
-    <img src="/static/icons/telephone-outbound-fill.svg" height="30px">
-  </a>
-  <!-- TELEGRAM -->
-  <a class="nav-link text-white" href="https://t.me/+79260480480" target="_blank">
-    <img src="/static/icons/telegram_primary.svg" height="30px">
-  </a>
-  <!-- WHATSUP -->
-  <a class="nav-link text-white" href="https://wa.me/+79260480480?text=С сайта:" target="_blank">
-    <img src="/static/icons/whatsapp.svg" height="30px">
-  </a>
-  
-  <!-- NAVBAR_TOGGLE_ICON -->
-  <button class="navbar-toggler btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="container p-0">
+    <!-- Logo, Title -->
+    <a class="navbar-brand" href="/">
+      <img src="/static/favicon/favicon_white.svg" height="40px">
+    </a>
+    <!-- <p class="text-white">{{ title }}</p > -->
 
-  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-    <ul class="navbar-nav ">
-      <li class="nav-item dropdown">
-      <li class="nav-item">
-        <a class="nav-link btn btn-secondary text-white m-1" href="/tag/кухня">Кухня</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn btn-secondary text-white m-1" href="/tag/шкаф">Шкаф</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn btn-secondary text-white m-1" href="/tag/гардероб">Гардероб</a>
-      </li>
-      <li class="nav-item"><a class="nav-link btn btn-secondary text-white m-1" href="/tag/ванная">Ванная</a>
-      </li>
-      <li class="nav-item"><a class="nav-link btn btn-primary text-white m-1" href="/comments">Отзывы</a>
-      </li>
+    <!-- PHONE  -->
+    <a class="nav-link text-white" href="tel:+79257025995">
+      <img src="/static/icons/telephone-outbound-fill.svg" height="30px">
+      <i class="d-none d-sm-inline">+79257025995</i>
+    </a>
+    <!-- TELEGRAM -->
+    <a class="nav-link text-white" href="https://t.me/+79260480480" target="_blank">
+      <img src="/static/icons/telegram_primary.svg" height="30px">
+    </a>
+    <!-- WHATSUP -->
+    <a class="nav-link text-white" href="https://wa.me/+79260480480?text=С сайта:" target="_blank">
+      <img src="/static/icons/whatsapp.svg" height="30px">
+    </a>
 
-      </li>
+    <!-- NAVBAR_TOGGLE_ICON -->
+    <button class="navbar-toggler btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <!-- SEARCH -->
-      <li class="nav-item">
-        <form class="m-1 input-group" role="search" action="/search" method="get">
-          <input type="text" class="form-control" placeholder="Поиск" aria-label="Search" name="search"
-            pattern="[A-Za-zА-Яа-яЁё0-9 \ ]*">
-          <button class="btn" type="submit"
-            style="padding: 0.5rem 1rem; background-color: white; border-bottom-left-radius: 0; border-top-left-radius: 0;"><img
-              src="/static/icons/search.svg" height="20px"></button>
-        </form>
-      </li>
-    </ul>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav ">
+        <li class="nav-item dropdown">
+        <li class="nav-item">
+          <a class="nav-link btn btn-secondary text-white m-1" href="/tag/кухня">Кухня</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-secondary text-white m-1" href="/tag/шкаф">Шкаф</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-secondary text-white m-1" href="/tag/гардероб">Гардероб</a>
+        </li>
+        <li class="nav-item"><a class="nav-link btn btn-secondary text-white m-1" href="/tag/ванная">Ванная</a>
+        </li>
+        <li class="nav-item"><a class="nav-link btn btn-light text-primary m-1" href="/comments">Отзывы</a>
+        </li>
+        <li class="nav-item"><a class="nav-link btn btn-light  text-primary m-1" href="/feedback">Контакты</a>
+        </li>
+        </li>
+
+        <!-- SEARCH -->
+        <li class="nav-item">
+          <form class="m-1" role="search" action="/search" method="get" style="line-height: .5rem;">
+            <input type="text" class="form-control" placeholder="Поиск" aria-label="Search" name="search"
+              pattern="[A-Za-zА-Яа-яЁё0-9 \ ]*">
+
+          </form>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
 </br>

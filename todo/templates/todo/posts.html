@@ -1,11 +1,11 @@
 {% extends 'todo/footer.html' %}
 {% block main_content %}
 
-<div class="">
+<div class="container">
 
     <div class="p-1 p-sm-2 rounded bg-white-75 shadow-sm">
         <div class="">
-            <h1 class="h3 text-primary">
+            <h1 class="h3 text-primary">наши проекты по тегу
                 {% if header %}
                 <button class="btn btn-secondary zoom">{{ header }}</button>
                 {% endif %}
@@ -16,14 +16,17 @@
             {% endfor %}
 
         </div>
-        <div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6">
+        <div class="row row-cols-sm-2 row-cols-md-4 row-cols-lg-6 row-cols-xl-12">
             {% for prj in projects %}
-            
+
             <a href="/post/{{prj.id}}" style="width: 100%;">
                 <div class="col ">
                     <div class="card mb-1 mb-sm-2 assa zoom" style=" background-image: url('{{prj.thumbnail}}')">
-                        <div class="text-white p-1 card-footer foo">
-                            <p style="margin-block-end: 0em;">{{prj.title}}</p>
+                        <div class="text-white bg-primary-75 top">
+                            <b style="text-indent: 0;">{{prj.id}}</b>
+                        </div>
+                        <div class="text-white p-1 bg-primary-75 foo">
+                            <p style="text-indent: 0;">{{prj.title}}</p>
                         </div>
                     </div>
                 </div>

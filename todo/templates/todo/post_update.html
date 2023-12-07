@@ -1,8 +1,8 @@
 {% extends 'todo/footer.html' %}
 {% block main_content %}
 <div class="container mb-5 p-3 px-5 rounded bg-white-75 shadow-sm">
-    
-<h1 class="text-secondary h4">#{{ project.id }} - {{ project.title}} </h1>
+
+    <h1 class="text-secondary h4">#{{ project.id }} - {{ project.title}} </h1>
     <form enctype="multipart/form-data" method="POST">
         {% csrf_token %}
 
@@ -11,15 +11,18 @@
         {% endfor %}
         <div class="mb-3">
             <label for="id_title">Заголовок:</label>
-            <input class="form-control" type="text" name="title" maxlength="100" required="" id="id_title" value="{{ form.title.value }}">
+            <input class="form-control" type="text" name="title" maxlength="100" required="" id="id_title"
+                value="{{ form.title.value }}">
         </div>
         <div class="mb-3">
             <label for="id_description">Описание:</label>
-            <textarea class="form-control" name="description" cols="40" rows="10" id="id_description">{{ form.description.value }}</textarea>
+            <textarea class="form-control" name="description" cols="40" rows="10"
+                id="id_description">{{ form.description.value }}</textarea>
         </div>
         <div class="mb-3">
             <label for="id_tags">#Тэги:</label>
-            <input class="form-control" type="text" name="tags" maxlength="100" id="id_tags" value="{{ form.tags.value }}">
+            <input class="form-control" type="text" name="tags" maxlength="100" id="id_tags"
+                value="{{ form.tags.value }}">
         </div>
         <div class="mb-3">
             <label for="id_rating">Рейтинг (чем больше тем выше в выдаче):</label>
@@ -28,9 +31,14 @@
         <div class="mb-3 border p-3">
             <h5 class="form-label">Фото Альбом</h5>
             <input class="form-control" type="file" name="image" multiple="" accept="image/*" id="id_image">
-            <div>
+            <div class="m-2 primary">
                 {% for img in album %}
-                <img src="/media/{{ img }}" height="50px">
+                <div class="img_delition">
+                    <img src="/media/photos/{{ project.id }}/{{ img }}.thumbnail" style="width: 5rem;"
+                        alt="wwbb.ru image" />
+                    <button>Удалить?</button>
+                </div>
+
                 {% endfor %}
             </div>
         </div>

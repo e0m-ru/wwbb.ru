@@ -42,15 +42,15 @@ def post_read(request, post_id):
     tags = db_Obj.tags.lower().split(',')
     tags = [*map(lambda x: x.strip(), tags)]
     album = collect_album(post_id)
-    a = Project.objects.filter(tags__contains=tags[0].capitalize())
-    insert_thumbnail(a)
+    sim= similar_posts(post_id)
+    insert_thumbnail(sim)
     context = {
         'title': db_Obj.title,
         'project': db_Obj,
         'tags': tags,
         'album': album,
         'description': f'Проект {db_Obj.title} wwbb.ru ',
-        'a': a,
+        'similar': sim,
     }
     return render(request, 'todo/post_read.html', context)
 
@@ -68,6 +68,7 @@ def post_update(request, post_id):
     context = {
         'title': 'Редактор проекта',
         'project': db_Obj,
+        'album': collect_album(post_id),
         'form': form,
         'description': 'Редактирование материала wwbb.ru',
     }
@@ -91,9 +92,10 @@ def post_delete(request, post_id):
 def posts(request):
     all_posts = Project.objects.filter(public=True)
     insert_thumbnail(all_posts)
+    all_posts.sort(key = lambda x: x.rating , reverse=True)
     context = {
         'title': 'примеры работ',
-        'projects': random.shuffle(all_posts),
+        'projects': all_posts,
         'description': 'Список проектов производства корпусной мебели wwbb.ru',
     }
     return render(request, 'todo/posts.html', context)
@@ -102,13 +104,14 @@ def posts(request):
 def posts_by_tag(request, tag):
     db_Obj = Project.objects.all()
     insert_thumbnail(db_Obj)
+
     by_tags = []
     for i in db_Obj:
         tags = i.tags.lower().split(',')
         tags = map(lambda x: x.strip(), tags)
         if tag.lower() in tags:
             by_tags.append(i)
-    random.shuffle(by_tags)
+    by_tags.sort(key = lambda x: x.rating , reverse=True)
     context = {
         'title': 'МебелЯ: ' + str(tag),
         'header': str(tag),

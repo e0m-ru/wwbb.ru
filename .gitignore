@@ -5,3 +5,5 @@ todo/templates/todo/base.html
 vn_act.sh
 *_bk*
 *.DS_Store
+static/admin/
+media/photos/

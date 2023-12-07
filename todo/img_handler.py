@@ -3,6 +3,8 @@ from PIL import Image
 import os
 from random import choice
 from djsite.settings import BASE_DIR, MEDIA_ROOT
+from .models import Project
+
 
 PHOTO_PATH = os.path.join(MEDIA_ROOT, 'photos/')
 
@@ -47,3 +49,17 @@ def crop_center(pil_img):
                          (img_height - crop_factor) // 2,
                          (img_width + crop_factor) // 2,
                          (img_height + crop_factor) // 2)).resize((256, 256))
+
+def similar_posts(post_id):
+    post = Project.objects.get(id=post_id)
+    t = post.tags.lower().split(',')
+    all_posts=Project.objects.all()
+    all_posts = [x for x in all_posts if t[0].lower()==x.tags.lower().split(',')[0]]
+    mask = [set(x.tags.lower().split(',')) & set(t) for x in all_posts]
+    f = [*filter(lambda x: x[0], zip(mask, all_posts))]
+    f.sort(key = lambda x: len(x[0]), reverse=True)
+    f = f[:12]
+    f.sort(key = lambda x: x[1].rating , reverse=True)
+    posts = [x[1] for x in f if x[1].id != post_id]
+    
+    return posts[:6]
