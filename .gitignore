@@ -6,5 +6,5 @@ vn_act.sh
 *_bk*
 *.DS_Store
 static/admin/
-.svcode/
+.vscode/
 .gitignore
