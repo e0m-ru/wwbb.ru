@@ -1,0 +1,25 @@
+{% extends 'todo/footer.html' %}
+{% load crispy_forms_tags %}
+
+{% block main_content %}
+<div class="container border shadow-sm rounded p-4 bg-light bg-gradient mb-5 mt-5" id="content">
+
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Добро пожаловать!</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Регистрация</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Уже есть аккаунт? <a class="ml-2" href="{% url 'login' %}">Вход</a>
+            </small>
+        </div>
+    </div>
+</div>
+{% endblock main_content %}
