@@ -6,7 +6,7 @@ urlpatterns = [
     path('feedback', views.feedback),
     path('vk', views.vk_api),
     re_path('search', views.search, name="search"),
-    
+
     # CRUD Project urls
     path('posts', views.all_photos, name='posts'),
     path('photo', views.all_photos, name='photo'),
@@ -14,16 +14,18 @@ urlpatterns = [
     path('update/<int:post_id>', views.post_update, name='post_update'),
     path('delete/<int:post_id>', views.post_delete, name='post_delete'),
     path('post/<int:post_id>', views.post_read, name='post'),
-   
+
     # Comments CRUD urls
     path('comments', views.comments, name='comments'),
     path('add_comment', views.add_comment, name='add_comment'),
-    path('update_comment/<int:com_id>', views.update_comment, name='update_comment'),
-    path('delete_comment/<int:com_id>', views.delete_comment, name='delete_comment'),
+    path('update_comment/<int:com_id>',
+         views.update_comment, name='update_comment'),
+    path('delete_comment/<int:com_id>',
+         views.delete_comment, name='delete_comment'),
     path('comment/<int:com_id>', views.read_comment, name='read_comment'),
 
     path('tag/<str:tag>', views.posts_by_tag, name="tag"),
-    path('image', views.image_gallery, name='image_gallery'),
+
     # In all other cases
-    path('', views.main_page),    
+    path('', views.main_page),
 ]
