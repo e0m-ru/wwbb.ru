@@ -8,3 +8,4 @@ vn_act.sh
 static/admin/
 .vscode/
 .gitignore
+djsite/settings.py
