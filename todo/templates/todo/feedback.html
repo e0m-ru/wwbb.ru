@@ -57,26 +57,15 @@
             жилья – от малогабаритной квартиры до торгового павильона.</p>
         <p>На нашем сайте Вы найдете множество примеров наших работ по изготовлению и производству мебели.</p>
         <hr>
-        <div class="row row-cols-md-4">
+        <!-- EXAMPLES 02-->
+        <div class="p-1 rounded row row-cols-md-3 row-cols-lg-4 row-cols-sm-2 ror-cols-2">
             {% for prj in projects %}
 
             <a href="/post/{{prj.id}}" style="width: 100%;">
                 <div class="col">
-                    <div class="card mb-1 mb-sm-4" style="  
-                height: 10rem;
-                background-position: center center;
-                background-repeat: no-repeat;
-                background-size: 110% auto;
-              
-                background-image: url('{{prj.thumbnail}}')">
-
-                        <div class="text-white p-1 card-footer" style="
-                        width: 100%;
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        background-color: rgba(120, 194, 173, .5);
-                        ">
+                    <div class="card assa zoom mb-2" style="  
+                        background-image: url('{{prj.thumbnail}}')">
+                        <div class="text-white p-1 card-footer foo">
                             <p style="margin-block-end: 0em;">{{prj.title}}</p>
                         </div>
                     </div>

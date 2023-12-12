@@ -25,9 +25,9 @@ def main_page(request):
 
 
 def feedback(request):
-    all_posts = Project.objects.filter(public=True)
+    
+    all_posts = Project.objects.filter(public=True).order_by("-rating")[:12]
     insert_thumbnail(all_posts)
-    all_posts = random.choices(all_posts)
     context = {
         'title': 'МебелЯ: Контакты',
         'description': 'Контактная информация мебельного производства wwbb.ru',
