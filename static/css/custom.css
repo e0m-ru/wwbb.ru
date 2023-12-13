@@ -29,8 +29,6 @@
 
 p,
 h2 {
-  text-indent: 1.5rem;
-  /* text-align: justify; */
   padding-bottom: .5rem;
 }
 
@@ -99,7 +97,6 @@ header {
 }
 
 .assa:hover .foo {
-
   bottom: 0;
   left: 0;
   background-color: var(--primary-75);

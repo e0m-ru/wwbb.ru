@@ -1,24 +1,62 @@
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit);
     grid-gap: 10px;
+    width: 100%;
 }
 
-.item {
-    background-color: #ccc;
-    /* задаем высоту элемента равной 100% от ширины */
-    padding-top: 100%;
+.grid_item {
     position: relative;
+    background-color: var(--primary-75);
+    overflow: hidden;
+    scale: 1;
+    transition: all .5s;
+    border-radius: 1rem;
 }
 
+.grid_item img {
+    width: 100%;
+    transition: all .5s;
+    z-index: 3;
+}
 
-*/ .item>* {
+.grid_item:hover img {
+    cursor: zoom-in;
+    box-shadow: 1px 1px 20px rgba(68, 77, 75, 0.33);
+    scale: 1.1;
+}
+
+.grid_item span {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    padding: .5rem;
+    background-color: var(--primary-75);
+    transition: all ease .5s;
+    color: var(--white);
+    z-index: 5;
 }
+
+.grid_item .number {
+    top: 0;
+    left: -3rem;
+    border-radius: 0 0 1rem 0;
+}
+
+.grid_item:hover .number {
+    left: 0;
+}
+
+.grid_item .title {
+    width: 100%;
+    bottom: -3.5rem;
+    left: 0;
+    border-radius: 1rem 1rem 0 0;
+    padding: .25rem .5rem .5rem 1rem;
+}
+
+.grid_item:hover .title {
+    bottom: 0rem;
+}
+
 
 @media (max-width: 767px) {
     .grid-container {
