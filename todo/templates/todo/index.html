@@ -1,11 +1,33 @@
 {% extends 'todo/footer.html' %}
 
 {% block main_content %}
+<!-- ITEM 1 -->
 <main class="container">
-    <!-- ITEM 1 -->
     <Section class="p-2 rounded bg-white-75 shadow-sm">
+        <h1 class="text-primary h3">ПРОИЗВОДСТВО <span class="text-secondary">МЕБЕЛИ</span></h1>
+        <!-- EXAMPLES 01-->
+
+        <div class="p-1 row row-cols-2 row-cols-sm-4">
+            {% for prj in example_01 %}
+            <a href="/post/{{prj.id}}" style="width: 100%;">
+                <div class="col">
+                    <div class=" card my-2 assa zoom" style="  
+                background-image: url('{{prj.thumbnail}}')">
+                        <div class="text-white p-1 card-footer foo">
+                            <p style="margin-block-end: 0em;">{{prj.title}}</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <h5 class="text-primary h5">Мы готовы предложить вам <span class="text-secondary">высокое качество</span>
+            производства,
+            <span class="text-secondary">надежность и профессионализм </span>в
+            каждом аспекте нашей
+            работы, чтобы создать <span class="text-secondary">мебель, которая превзойдет ваши ожидания.</span>
+        </h5>
         <div class="col-sm">
-            <h1 class="text-primary h3">ПРОИЗВОДСТВО <span class="text-secondary">МЕБЕЛИ</span></h1>
             <h2 class="h5">Мы предлагаем полный цикл производства корпусной и встроенной мебели на заказ. Благодаря
                 собственному производству и использованию качественных европейских материалов, мы создаем шкафы, которые
                 соответствуют любым требованиям и пожеланиям клиентов.
@@ -30,27 +52,28 @@
         </ul>
     </Section>
 
-    <!-- EXAMPLES 01-->
-    <div class="p-1 bg-white-75 rounded row row-cols-2 row-cols-sm-4">
-        {% for prj in example_01 %}
-        <a href="/post/{{prj.id}}" style="width: 100%;">
-            <div class="col">
-                <div class=" card my-2 assa zoom" style="  
-                background-image: url('{{prj.thumbnail}}')">
-                    <div class="text-white p-1 card-footer foo">
-                        <p style="margin-block-end: 0em;">{{prj.title}}</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-        {% endfor %}
-    </div>
 
     <!-- ITEM 2 -->
 
     <Section class="p-2 rounded bg-white-75">
         <div class="col-sm">
             <h1 class="text-primary h3">РАЗРАБОТКА <span class="text-secondary">ПРОЕКТА</span></h1>
+            <!-- EXAMPLES 02-->
+            <div class="p-1 rounded row row-cols-2 row-cols-sm-4">
+                {% for prj in example_02 %}
+
+                <a href="/post/{{prj.id}}" style="width: 100%;">
+                    <div class="col">
+                        <div class="card my-2 assa zoom" style="  
+                                background-image: url('{{prj.thumbnail}}')">
+                            <div class="text-white p-1 card-footer foo">
+                                <p style="margin-block-end: 0em;">{{prj.title}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
             <h2 class="h5">Мы предлагаем изготовление мебели на заказ с учетом индивидуальных размеров и на основе
                 вашего проекта, эскиза или рисунка. Наша команда опытных специалистов разработает уникальное решение,
                 полностью соответствующее вашим требованиям и предпочтениям. Мы гарантируем высокое качество работы и
@@ -79,27 +102,27 @@
         </div>
     </Section>
 
-    <!-- EXAMPLES 02-->
-    <div class="p-1 rounded row row-cols-2 row-cols-sm-4">
-        {% for prj in example_02 %}
 
-        <a href="/post/{{prj.id}}" style="width: 100%;">
-            <div class="col">
-                <div class="card my-2 assa zoom" style="  
-                background-image: url('{{prj.thumbnail}}')">
-                    <div class="text-white p-1 card-footer foo">
-                        <p style="margin-block-end: 0em;">{{prj.title}}</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-        {% endfor %}
-    </div>
 
     <!-- ITEM 3-->
     <Section class="p-2 rounded bg-white-75 shadow-sm">
         <div class="col-sm">
             <h1 class="text-primary h3">ДОСТАВКА <span class="text-secondary">И СОБОРКА</span></h1>
+            <!-- EXAMPLES 03-->
+            <div class="rounded row row-cols-2 row-cols-sm-4">
+                {% for prj in example_03 %}
+
+                <a href="/post/{{prj.id}}" style="width: 100%;">
+                    <div class="col">
+                        <div class="card mb-2 assa zoom" style="background-image: url('{{prj.thumbnail}}')">
+                            <div class="text-white p-1 card-footer foo">
+                                <p style="margin-block-end: 0em;">{{prj.title}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
             <h2 class="h5">Мы специализируемся на производстве мебели для гостиных и спален, кафе и ресторанов, кухонь и
                 гардеробов, а также на монтаже декоративной и дизайнерской мебели.</h2>
         </div>
@@ -116,30 +139,10 @@
                 <p>Важно отметить, что вы оплачиваете свой заказ только после того, как мы установим его для вас. Это
                     гарантирует ваше полное удовлетворение результатом нашей работы.</p>
             </div>
-            <hr>
-            <div class="col">
-                <h5 class="text-primary h3">Мы готовы предложить вам высокое качество, надежность и профессионализм в
-                    каждом аспекте нашей
-                    работы, чтобы создать мебель, которая превзойдет ваши ожидания.</h5>
-            </div>
         </div>
     </Section>
 
-    <!-- EXAMPLES 03-->
-    <div class="rounded row row-cols-2 row-cols-sm-4">
-        {% for prj in example_03 %}
 
-        <a href="/post/{{prj.id}}" style="width: 100%;">
-            <div class="col">
-                <div class="card mb-2 assa zoom" style="background-image: url('{{prj.thumbnail}}')">
-                    <div class="text-white p-1 card-footer foo">
-                        <p style="margin-block-end: 0em;">{{prj.title}}</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-        {% endfor %}
-    </div>
 
 
 </main>
