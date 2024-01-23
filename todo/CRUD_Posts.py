@@ -37,20 +37,14 @@ def post_create(request):
 
 
 def post_read(request, post_id):
-    all_objects = Project.objects.all()
-    db_Obj = all_objects.get(id=post_id)
-    tags = db_Obj.tags.lower().split(',')
-    tags = [*map(lambda x: x.strip(), tags)]
-    album = collect_album(post_id)
-    sim= similar_posts(post_id)
-    insert_thumbnail(sim)
+    post = Project.objects.all().get(id=post_id)
     context = {
-        'title': db_Obj.title,
-        'project': db_Obj,
-        'tags': tags,
-        'album': album,
-        'description': f'Проект {db_Obj.title} wwbb.ru ',
-        'similar': sim,
+        'title': 'Мебеля',
+        'project': post,
+        'tags': [*map(str.strip, post.tags.lower().split(','))],
+        'album': collect_album(post_id),
+        'description': f'Проект {post.title} wwbb.ru ',
+        'similar': insert_thumbnail(similar_posts(post_id)),
     }
     return render(request, 'todo/post_read.html', context)
 
