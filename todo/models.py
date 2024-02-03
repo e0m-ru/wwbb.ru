@@ -15,6 +15,8 @@ class Project(models.Model):
 
     def __str__(self):
         return str(self.id) + ' ' + self.title
+    def __repr__(self):
+        return str(self.id) + ' ' + self.title
 
 
 def id_path(instance, filename):
