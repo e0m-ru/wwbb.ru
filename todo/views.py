@@ -8,12 +8,9 @@ from djsite.settings import MEDIA_ROOT
 
 
 def main_page(request):
-    all_posts = Project.objects.filter(public=True)
-    all_posts = list(all_posts)
-    all_posts.sort(reverse=True, key=lambda x: x.rating)
+    all_posts = Project.objects.filter(public=True).order_by('-rating')[:12]
     insert_thumbnail(all_posts)
-    all_posts = all_posts[:12]
-    shuffle(all_posts)
+    shuffle(list(all_posts))
     context = {
         'title': 'МебелЯ',
         'example_01': all_posts[:4],

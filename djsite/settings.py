@@ -8,10 +8,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ea&iyv=w$f9p22q*%(^q#gp2sv&ggh!f4))uj52l1x%js!i_iw'
+SECRET_KEY = 'H8-0MY34wXC_ium06s04aDLfYg5i9glsN8Xdchnpezg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -106,5 +106,5 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-LOGIN_REDIRECT_URL = 'posts'
+LOGIN_REDIRECT_URL = '/admin'
 LOGIN_URL = 'login'

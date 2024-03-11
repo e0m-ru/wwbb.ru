@@ -24,8 +24,10 @@ def post_create(request):
             img_path = f'{PHOTO_PATH}{f.id}'
             os.mkdir(img_path)
             for s, i in enumerate(files):
-                img = img_handler(i, f.id, s)
+                img_handler(i, f.id, s)
             return redirect('/post/' + str(f.id))
+        else:
+            render(request, 'todo/post_create.html', context)
     
     form = ProjectForm()
     context = {

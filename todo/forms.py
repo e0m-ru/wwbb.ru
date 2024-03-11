@@ -1,4 +1,3 @@
-from email.policy import default
 from django.forms import ModelForm
 from django import forms
 from .models import Project, Comment

@@ -5,7 +5,7 @@ class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
     tags = models.CharField(max_length=100, verbose_name='#Тэги', blank=True)
-    rating = models.IntegerField(null=True, blank=True)
+    rating = models.IntegerField(default=5, blank=False, null=False)
     public = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
