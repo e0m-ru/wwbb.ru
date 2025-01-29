@@ -10,6 +10,12 @@
         {% for hidden in form.hidden_fields %}
         {{ hidden }}
         {% endfor %}
+
+        <div class="mb-3">
+            <label for="id_title">Импорт из ВК:</label>
+            <a href="/posts" class="btn btn-primary">РЕПОСТ</a>
+        </div>
+
         <div class="mb-3">
             <label for="id_title">Заголовок:</label>
             <input class="form-control" type="text" name="title" maxlength="100" required="" id="id_title">
@@ -39,7 +45,7 @@
             <input class="btn btn-secondary" type="submit" name="" value="Схранить проект" class="btn btn-secondary">
         </div>
     </form>
-<hr>
+    <hr>
     <!-- ------------- -->
 
     <div class="mb-3 border p-3">
@@ -48,5 +54,25 @@
         {{ form }}
         {% endfor %}
     </div>
+
+    <h4> ИМПОРТ ПОСТОВ ИЗ ВК </h4>
+    <div class="row row-cols-2 row-cols-sm-4">
+        {% for post in posts %}
+        
+        <a href="/post/{{post.id}}" style="width: 100%;">
+            <div class="col ">
+                <div class="card mb-2 assa zoom" style=" background-image: url('{{post.attachments.0.photo.sizes.2.url}}')">
+                    <div class="text-white bg-primary-75 top">
+                        <b style="text-indent: 0;">{{post.id}}</b>
+                    </div>
+                    <div class="text-white p-1 bg-primary-75 foo">
+                        <p style="text-indent: 0;">{{ post.text|truncatewords:1 }}</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
 </div>
 {% endblock main_content %}

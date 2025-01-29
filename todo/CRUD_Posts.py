@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 import os
 from .img_handler import *
 import random
+from .vk_repost import get_wall_posts
 
 
 # CRUD Projects views functions
@@ -34,6 +35,7 @@ def post_create(request):
         'title': 'Добавить пост',
         'form': form,
         'description': 'Создание поста на сайте wwbb.ru',
+        'posts': get_wall_posts(),
     }
     return render(request, 'todo/post_create.html', context)
 
