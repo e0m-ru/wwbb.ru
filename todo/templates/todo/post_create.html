@@ -12,17 +12,18 @@
         {% endfor %}
 
         <div class="mb-3">
-            <label for="id_title">Импорт из ВК:</label>
-            <a href="/posts" class="btn btn-primary">РЕПОСТ</a>
+            <a href="#VK" class="btn btn-primary">Импорт из ВК</a>
         </div>
 
         <div class="mb-3">
-            <label for="id_title">Заголовок:</label>
-            <input class="form-control" type="text" name="title" maxlength="100" required="" id="id_title">
+            <label for="id_public">Опубликован:</label>
+            <input class="" type="checkbox" name="public" id="id_public" checked="">
+            <input class="form-control" type="text" name="title" maxlength="100" required="" id="id_title"
+                placeholder="Заголовок">
         </div>
         <div class="mb-3">
-            <label for="id_description">Описание:</label>
-            <textarea class="form-control" name="description" cols="40" rows="10" id="id_description"></textarea>
+            <textarea class="form-control" name="description" cols="20" rows="10" id="id_description"
+                placeholder="Описание проекта"></textarea>
         </div>
         <div class="mb-3">
             <label for="id_tags">#Тэги:</label>
@@ -30,15 +31,14 @@
         </div>
         <div class="mb-3">
             <label for="id_rating">Рейтинг (чем больше тем выше в выдаче):</label>
-            <input class="form-control" type="number" name="rating" id="id_rating" value="1">
+            <input class="form-control" type="number" name="rating" id="id_rating" value="10">
         </div>
         <div class="mb-3 border p-3">
             <h5 class="form-label">Фото Альбом</h5>
-            <input class="form-control" type="file" name="image" multiple="" accept="image/*" required="" id="id_image">
+            <input class="form-control" type="file" name="image" multiple="" accept="image/*" id="id_image">
         </div>
         <div class="mb-3">
-            <input class="" type="checkbox" name="public" id="id_public" checked="">
-            <label for="id_public">Опубликован:</label>
+
         </div>
         <div class="d-grid gap-2">
             <a href="/posts" class="btn btn-primary">Отмена</a>
@@ -55,24 +55,85 @@
         {% endfor %}
     </div>
 
-    <h4> ИМПОРТ ПОСТОВ ИЗ ВК </h4>
+    <h4 id="VK"> ИМПОРТ ПОСТОВ ИЗ ВК </h4>
     <div class="row row-cols-2 row-cols-sm-4">
+
         {% for post in posts %}
-        
-        <a href="/post/{{post.id}}" style="width: 100%;">
-            <div class="col ">
-                <div class="card mb-2 assa zoom" style=" background-image: url('{{post.attachments.0.photo.sizes.2.url}}')">
-                    <div class="text-white bg-primary-75 top">
-                        <b style="text-indent: 0;">{{post.id}}</b>
-                    </div>
-                    <div class="text-white p-1 bg-primary-75 foo">
-                        <p style="text-indent: 0;">{{ post.text|truncatewords:1 }}</p>
-                    </div>
+
+        <div id="{{post.id}}" class="col clickable-block">
+            <div class="card mb-2 assa zoom" style=" background-image: url('{{post.attachments.0.photo.sizes.2.url}}')">
+                <div class="text-white bg-primary-75 top">
+                    <b style="text-indent: 0;">{{post.id}}</b>
+                </div>
+                <div class="text-white p-1 bg-primary-75 foo">
+                    <p id="description" style="text-indent: 0; font-size: xx-small;">{{ post.text }}</p>
                 </div>
             </div>
-        </a>
+            <div style="display: none;">
+                {% for img in post.attachments %}
+                <a href="{{ img.photo.orig_photo.url }}" id="img_{{ img.photo.id }}"></a>
+                {% endfor %}
+            </div>
+        </div>
+
+
         {% endfor %}
     </div>
 
 </div>
+<script>
+    // Получаем все элементы <li> внутри <ul>
+    const blocks = document.querySelectorAll('.clickable-block');
+    const form = document.getElementById('post_form');
+
+    blocks.forEach(block => {
+        block.addEventListener('click', function () {
+            const titleInput = form.querySelector('#id_title');
+            titleInput.value = block.querySelector('#description').innerHTML.split(/[.,]+/)[0];
+            const textInput = form.querySelector('#id_description');
+            textInput.value = block.querySelector('#description').innerHTML;
+            const tags = form.querySelector('#id_tags');
+            tags.value = block.querySelector('#description').innerHTML.split(/[., ]+/).filter(word => word.length > 2).map(word => word.toLowerCase()).join(', ');;
+            window.scrollTo(0, 0);
+            // load files
+            const images = block.querySelectorAll('a')
+            addImagesToFileInput(images)
+        });
+    });
+    // Функция для загрузки изображения по URL и преобразования его в File
+    async function fetchImageAsFile(imgUrl, fileName) {
+        try {
+            const response = await fetch(imgUrl);
+            if (!response.ok) throw new Error('Ошибка при загрузке изображения');
+
+            const blob = await response.blob(); // Получаем изображение как Blob
+            return new File([blob], fileName, { type: blob.type }); // Преобразуем Blob в File
+        } catch (error) {
+            console.error('Не удалось загрузить изображение:', error);
+            return null;
+        }
+    }
+
+    // Функция для добавления файлов в input
+    async function addImagesToFileInput(images) {
+        const files = [];
+        const fileInput = form.querySelector('#id_image');
+        // Собираем все изображения из блоков
+        for (const a of images) {
+            if (a && a.href) {
+                const file = await fetchImageAsFile(a.href, a.id);
+                if (file) files.push(file);
+            }
+        }
+
+        // Создаём новый FileList и добавляем файлы в input
+        const dataTransfer = new DataTransfer();
+        files.forEach(file => dataTransfer.items.add(file));
+        fileInput.files = dataTransfer.files;
+
+        console.log('Изображения добавлены в input:', fileInput.files);
+    }
+
+</script>
+
 {% endblock main_content %}

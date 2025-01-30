@@ -6,6 +6,7 @@ import os
 from .img_handler import *
 import random
 from .vk_repost import get_wall_posts
+from django.shortcuts import get_object_or_404
 
 
 # CRUD Projects views functions
@@ -41,7 +42,7 @@ def post_create(request):
 
 
 def post_read(request, post_id):
-    post = Project.objects.all().get(id=post_id)
+    post = get_object_or_404(Project,id=post_id)
     context = {
         'title': 'Мебеля',
         'project': post,
@@ -84,7 +85,7 @@ def post_delete(request, post_id):
         os.rmdir(f'{PHOTO_PATH}{post_id}/')
         db_Obj.delete()
         return redirect('/posts')
-    return render(request, 'todo/post_delete.html', {'project': db_Obj, 'title': 'Удаление поста', 'album': collect_album(post_id)})
+    return render(request, 'todo/post_delete.html', {'project': db_Obj, 'title': 'Удаление поста', 'album': album})
 
 
 def posts(request):
