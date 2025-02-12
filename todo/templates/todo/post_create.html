@@ -1,5 +1,7 @@
 {% extends 'todo/footer.html' %}
 
+{% load static %}
+
 {% block main_content %}
 <div class="container mb-5 p-3 px-5 rounded bg-white-75 shadow-sm">
     <h1 class="text-secondary h4">Добавление нового проекта</h1>
@@ -12,17 +14,13 @@
         {% endfor %}
 
         <div class="mb-3">
-            <a href="#VK" class="btn btn-primary">Импорт из ВК</a>
-        </div>
-
-        <div class="mb-3">
             <label for="id_public">Опубликован:</label>
             <input class="" type="checkbox" name="public" id="id_public" checked="">
             <input class="form-control" type="text" name="title" maxlength="100" required="" id="id_title"
                 placeholder="Заголовок">
         </div>
         <div class="mb-3">
-            <textarea class="form-control" name="description" cols="20" rows="10" id="id_description"
+            <textarea class="form-control" name="description" cols="20" rows="2" id="id_description"
                 placeholder="Описание проекта"></textarea>
         </div>
         <div class="mb-3">
@@ -33,7 +31,7 @@
             <label for="id_rating">Рейтинг (чем больше тем выше в выдаче):</label>
             <input class="form-control" type="number" name="rating" id="id_rating" value="10">
         </div>
-        <div class="mb-3 border p-3">
+        <div id="album" class="mb-3 border p-3">
             <h5 class="form-label">Фото Альбом</h5>
             <input class="form-control" type="file" name="image" multiple="" accept="image/*" id="id_image">
         </div>
@@ -43,18 +41,14 @@
         <div class="d-grid gap-2">
             <a href="/posts" class="btn btn-primary">Отмена</a>
             <input class="btn btn-secondary" type="submit" name="" value="Схранить проект" class="btn btn-secondary">
+            <a href="#VK" class="btn btn-info">Импорт из ВК</a>
         </div>
     </form>
     <hr>
     <!-- ------------- -->
+</div>
 
-    <div class="mb-3 border p-3">
-        <h5 class="form-label">Фото Альбом</h5>
-        {% for form in album %}
-        {{ form }}
-        {% endfor %}
-    </div>
-
+<div class="container mb-5 p-3 px-5 rounded bg-white-75 shadow-sm">
     <h4 id="VK"> ИМПОРТ ПОСТОВ ИЗ ВК </h4>
     <div class="row row-cols-2 row-cols-sm-4">
 
@@ -72,68 +66,14 @@
             <div style="display: none;">
                 {% for img in post.attachments %}
                 <a href="{{ img.photo.orig_photo.url }}" id="img_{{ img.photo.id }}"></a>
+                <img src="{{ img.photo.sizes.0.url }}" id="thumb_{{ img.photo.id }}">
                 {% endfor %}
             </div>
         </div>
-
-
         {% endfor %}
     </div>
-
 </div>
-<script>
-    // Получаем все элементы <li> внутри <ul>
-    const blocks = document.querySelectorAll('.clickable-block');
-    const form = document.getElementById('post_form');
 
-    blocks.forEach(block => {
-        block.addEventListener('click', function () {
-            const titleInput = form.querySelector('#id_title');
-            titleInput.value = block.querySelector('#description').innerHTML.split(/[.,]+/)[0];
-            const textInput = form.querySelector('#id_description');
-            textInput.value = block.querySelector('#description').innerHTML;
-            const tags = form.querySelector('#id_tags');
-            tags.value = block.querySelector('#description').innerHTML.split(/[., ]+/).filter(word => word.length > 2).map(word => word.toLowerCase()).join(', ');;
-            window.scrollTo(0, 0);
-            // load files
-            const images = block.querySelectorAll('a')
-            addImagesToFileInput(images)
-        });
-    });
-    // Функция для загрузки изображения по URL и преобразования его в File
-    async function fetchImageAsFile(imgUrl, fileName) {
-        try {
-            const response = await fetch(imgUrl);
-            if (!response.ok) throw new Error('Ошибка при загрузке изображения');
-
-            const blob = await response.blob(); // Получаем изображение как Blob
-            return new File([blob], fileName, { type: blob.type }); // Преобразуем Blob в File
-        } catch (error) {
-            console.error('Не удалось загрузить изображение:', error);
-            return null;
-        }
-    }
-
-    // Функция для добавления файлов в input
-    async function addImagesToFileInput(images) {
-        const files = [];
-        const fileInput = form.querySelector('#id_image');
-        // Собираем все изображения из блоков
-        for (const a of images) {
-            if (a && a.href) {
-                const file = await fetchImageAsFile(a.href, a.id);
-                if (file) files.push(file);
-            }
-        }
-
-        // Создаём новый FileList и добавляем файлы в input
-        const dataTransfer = new DataTransfer();
-        files.forEach(file => dataTransfer.items.add(file));
-        fileInput.files = dataTransfer.files;
-
-        console.log('Изображения добавлены в input:', fileInput.files);
-    }
-
-</script>
+<script src="{% static 'js/vk_repost.js' %}" async="async"></script>
 
 {% endblock main_content %}
