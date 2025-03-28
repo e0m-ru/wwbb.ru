@@ -1,3 +1,4 @@
+from ast import Del
 import vk_api
 import os
 from djsite.settings import VK_SERVICE_KEY, VK_WWBB
@@ -11,7 +12,7 @@ def get_wall_posts():
         vk_session = vk_api.VkApi(token=token)
         vk = vk_session.get_api()
 
-        response = vk.wall.get(owner_id=owner_id, count=100)
+        response = vk.wall.get(owner_id=owner_id, count=8)
 
         if response and 'items' in response:
             return response['items']

@@ -45,15 +45,14 @@
         </div>
     </form>
     <hr>
-    <!-- ------------- -->
 </div>
 
+<!-- ------------- -->
 <div class="container mb-5 p-3 px-5 rounded bg-white-75 shadow-sm">
     <h4 id="VK"> ИМПОРТ ПОСТОВ ИЗ ВК </h4>
     <div class="row row-cols-2 row-cols-sm-4">
 
         {% for post in posts %}
-
         <div id="{{post.id}}" class="col clickable-block">
             <div class="card mb-2 assa zoom" style=" background-image: url('{{post.attachments.0.photo.sizes.2.url}}')">
                 <div class="text-white bg-primary-75 top">
@@ -65,8 +64,10 @@
             </div>
             <div style="display: none;">
                 {% for img in post.attachments %}
-                <a href="{{ img.photo.orig_photo.url }}" id="img_{{ img.photo.id }}"></a>
-                <img src="{{ img.photo.sizes.0.url }}" id="thumb_{{ img.photo.id }}">
+                {% if img.type is not none and img.type == "photo" %}
+                    <a href="{{ img.photo.orig_photo.url }}" id="img_{{ img.photo.id }}"></a>
+                    <img src="{{ img.photo.sizes.0.url }}" id="thumb_{{ img.photo.id }}">
+                {% endif %}
                 {% endfor %}
             </div>
         </div>

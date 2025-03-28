@@ -15,7 +15,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -106,5 +105,8 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-LOGIN_REDIRECT_URL = '/admin'
+LOGIN_REDIRECT_URL = '/profile'
 LOGIN_URL = 'login'
+
+VK_SERVICE_KEY = "f7417ba0f7417ba0f7417ba0b4f4542826ff741f7417ba0939a2a6f0dbf304a8d7f0864"
+VK_WWBB = "732870827" # Пашина страница

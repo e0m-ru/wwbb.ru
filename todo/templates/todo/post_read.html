@@ -24,18 +24,7 @@
     <a href="/tag/{{ i }}" class="btn btn-sm btn-outline-secondary ">{{ i }}</a>
     {% endfor %}
 
-    <h4>Похожие проекты:</h4>
-    <div class="grid-container">
-        {% for prj in similar %}
-        <div class="grid_item">
-            <span class="number">{{prj.id}}</span>
-            <a href="/post/{{prj.id}}">
-                <img src="{{prj.thumbnail}}">
-            </a>
-            <span class="title">{{prj.title}}</span>
-        </div>
-        {% endfor %}
-    </div>
+
 </div>
 
 <script src="/static/js/glightbox.js"></script>
