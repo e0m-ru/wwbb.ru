@@ -1,7 +1,7 @@
 {% extends 'todo/footer.html' %}
-
+{% load static %}
 {% block main_content %}
-<link rel="stylesheet" href="/static/css/glightbox.css" />
+<link rel="stylesheet" href="{% static 'css/glightbox.css' %}" />
 
 <div class="container rounded bg-white-75 shadow-sm">
     <h1 class="m-0 p-0 text-primary h3" style="display: inline-block;"><span class="badge badge-primary">
@@ -27,7 +27,7 @@
 
 </div>
 
-<script src="/static/js/glightbox.js"></script>
+<script src="{% static 'js/glightbox.js' %}"></script>
 <script>
     var lightbox = GLightbox();
     lightbox.on('open', (target) => {

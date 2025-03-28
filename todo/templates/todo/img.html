@@ -1,5 +1,5 @@
 {% extends 'todo/footer.html' %}
-
+{% load static %}
 {% block main_content %}
 
 <div class="container" id="content">
@@ -48,19 +48,3 @@
 </div>
 
 {% endblock main_content %}
-
-
-
-
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{img.id}}">
-    {{img.id}}
-  </button>
-<a data-bs-toggle="modal" data-bs-target="#{{img.id}}"><img src={{ img.thumb }} class="img-thumbnail rounded mx-auto p-1" ></a>
-<div id="{{img.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <img src={{ img.path }} class="img-thumbnail rounded mx-auto p-1">
-        </div>
-    </div>
-</div> -->

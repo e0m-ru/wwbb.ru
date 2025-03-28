@@ -1,11 +1,11 @@
 {% extends 'todo/base.html' %}
-
+{% load static %}
 {% block main_content %}
 
 <div class="parallax">
     <div class="parallax__group ">
         <div class="parallax__layer parallax__layer--back">
-            <img src="/static/img/1225.jpg" alt="">
+            <img src="{%  static 'img/1225.jpg' %}" alt="">
         </div>
         <div class="container parallax__layer parallax__layer--base">
             <div class="p-2 m-1 p-sm-2 m-sm-1 p-lg-5 m-lg-5">
@@ -42,7 +42,7 @@
     </div>
     <div class="parallax__group">
         <div class="parallax__layer parallax__layer--back">
-            <img src="/static/img/1226.jpg" alt="">
+            <img src="{% static img/1226.jpg' %}" alt="">
         </div>
         <div class="parallax__layer parallax__layer--base">
             <div class="p-2 m-1 p-sm-2 m-sm-1 p-lg-5 m-lg-5">

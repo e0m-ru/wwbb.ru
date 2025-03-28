@@ -1,4 +1,5 @@
 {% extends 'todo/base.html' %}
+{% load static %}
 {% block header %}
 
 <!-- NAVIGATION -->
@@ -6,22 +7,22 @@
   <div class="container p-0">
     <!-- Logo, Title -->
     <a class="navbar-brand" href="/">
-      <img src="/static/favicon/favicon_white.svg" height="40px">
+      <img src="{% static 'favicon/favicon_white.svg' %}" height="40px">
     </a>
     <!-- <p class="text-white">{{ title }}</p > -->
 
     <!-- PHONE  -->
     <a style="white-space: nowrap;" class="nav-link text-white" href="tel:+79257025995">
-      <img src="/static/icons/telephone-outbound-fill.svg" height="30px">
+      <img src="{% static 'icons/telephone-outbound-fill.svg' %}" height="30px">
       <!-- <i class="d-none d-lg-inline">+79257025995</i> -->
     </a>
     <!-- TELEGRAM -->
     <a class="nav-link text-white" href="https://t.me/+79260480480" target="_blank">
-      <img src="/static/icons/telegram_primary.svg" height="30px">
+      <img src="{% static 'icons/telegram_primary.svg' %}" height="30px">
     </a>
     <!-- WHATSUP -->
     <a class="nav-link text-white" href="https://wa.me/+79260480480?text=С сайта:" target="_blank">
-      <img src="/static/icons/whatsapp.svg" height="30px">
+      <img src="{% static 'icons/whatsapp.svg' %}" height="30px">
     </a>
 
     <!-- NAVBAR_TOGGLE_ICON -->
