@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'H8-0MY34wXC_ium06s04aDLfYg5i9glsN8Xdchnpezg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True  # Убедитесь, что включен режим отладки для локальной проверки
 
 ALLOWED_HOSTS = ['*']
 
@@ -84,6 +84,7 @@ LOGIN_URL = 'login'
 VK_SERVICE_KEY = "f7417ba0f7417ba0f7417ba0b4f4542826ff741f7417ba0939a2a6f0dbf304a8d7f0864"
 VK_WWBB = "732870827" # Пашина страница
 
-STATICFILES_DIRS = [
-    "e:/code/wwbb.ru/static/",
+CSRF_TRUSTED_ORIGINS = ['https://wwbb.ru', 'https://*.127.0.0.1']
+STATIC_DIRS = [
+    "E:\code\wwbb.ru\static",
 ]

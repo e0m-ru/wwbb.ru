@@ -13,7 +13,7 @@ COPY requirements.txt /code/
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Ensure media and database are not overwritten
-VOLUME ["/code/media", "/code/db.sqlite3"]
+VOLUME ["/code/static", "/code/media", "/code/db.sqlite3"]
 
 # Копируем проект
 COPY . /code/

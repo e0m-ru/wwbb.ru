@@ -2,12 +2,15 @@ version: '3.8'
 
 services:
   web:
-    image: e0mru/wwbbru-web
+    image: e0mru/wwbb.ru
+    build: .
     ports:
       - "8000:8000"
     volumes:
       - ./media:/code/media
+      - ./static:/code/static
       - ./db.sqlite3:/code/db.sqlite3
     environment:
       - PYTHONDONTWRITEBYTECODE=1
       - PYTHONUNBUFFERED=1
+    restart: always

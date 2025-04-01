@@ -15,9 +15,10 @@ urlpatterns = [
     path('logout', auth_views.LogoutView.as_view(
         template_name='users/logout.html'), name='logout'),
     path('', include('todo.urls'))
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
 
-from django.conf import settings
-from django.conf.urls.static import static
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 handler404 = "djsite.views.page_not_found_view"
