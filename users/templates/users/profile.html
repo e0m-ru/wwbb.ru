@@ -2,15 +2,21 @@
 
 {% block main_content %}
 <div class="container border shadow-sm rounded p-4 bg-light bg-gradient mb-5 mt-5" id="content">
-    <div class="content-section">
-        <div class="media">
-          <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" height="100px">
-          <div class="media-body">
-            <h2 class="account-heading">{{ user.username }}</h2>
-            <p class="text-secondary">{{ user.email }}</p>
-          </div>
-        </div>
-        <!-- Здесь будет форма -->
+  <div class="content-section">
+    <div class="media">
+      <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" height="100px">
+      <div class="media-body">
+        <h2 class="account-heading">{{ user.first_name }} {{ user.last_name }}</h2>
+        <h6 class="account-heading">{{ user.username }}</h6>
+        <p class="text-secondary">{{ user.email }}</p>
+        {% if user.is_authenticated %}
+
+        <a href="/create" class="btn btn-danger">Добавить пост</a>
+
+        {% endif%}
       </div>
+    </div>
+    <!-- Здесь будет форма -->
+  </div>
 </div>
 {% endblock main_content %}

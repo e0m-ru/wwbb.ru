@@ -1,15 +1,17 @@
 {% extends 'todo/footer.html' %}
 {% block main_content %}
 <div class="container" id="content">
-    <h2 class="h3 text-primary">Отзывы наших клиентов</h2>
-    <div class="row p-0">
-        <div class="col-12 "><iframe
-                style="overflow: auto; width:100%; height:125vh;border:1px solid #e6e6e6;border-radius:8px;box-sizing:border-box"
-                src="https://yandex.ru/maps-reviews-widget/14645750242?comments">
-            </iframe>
-        </div>
+    <h2 class="display-6 text-primary">ОТЗЫВЫ НАШИХ<span class="text-secondary">&nbsp;КЛИЕНТОВ</span></h2>
+    <h4><strong class="text-secondary">Наша репутация —</strong>&nbsp;<strong class="text-primary"> ваша
+            уверенность</strong></h4>
+    <p>Для нас важно не просто сделать мебель, а создать доверительные отношения с каждым клиентом. Мы ценим ваши отзывы
+        — они помогают нам становиться лучше.</p>
+    <p><strong>Более 200 довольных семей</strong> уже обустроили свои дома с нашей мебелью. Присоединяйтесь!</p>
 
-    </div>
+    <iframe
+        style="width: 100%; max-width: 760px; height: 1024px; border-radius:.5rem"
+        src="https://yandex.ru/maps-reviews-widget/14645750242?comments">
+    </iframe>
 </div>
 
 {% endblock main_content %}

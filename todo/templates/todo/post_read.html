@@ -3,14 +3,20 @@
 {% block main_content %}
 <link rel="stylesheet" href="{% static 'css/glightbox.css' %}" />
 
-<div class="container rounded bg-white-75 shadow-sm">
-    <h1 class="m-0 p-0 text-primary h3" style="display: inline-block;"><span class="badge badge-primary">
-            {{ project.id }}</span> {{ project.title }} </h1>
+<div class="container rounded bg-white-75 shadow-sm p-2 p-sm-3 p-md-4 p-lg-5 bg-white-75 shadow-sm">
+    <h1 class="text-primary display-5 display-sm-3" style="display: inline-block;"><span class="badge badge-primary">
+            №{{ project.id }}</span> {{ project.title }} </h1>
     {% if user.is_authenticated %}
     <a class="btn btn-danger" href="/update/{{ project.id }}">изменить</a>
     {% endif %}
+
     <p>{{ project.description }}</p>
-    <hr>
+    <div class="btn-group btn-group-sm mb-2">
+        {% for i in tags %}
+        <a href="/tag/{{ i }}" class="btn btn-outline-primary">{{ i }}</a>
+        {% endfor %}
+    </div>
+    
     <div class="row">
         {% for img in album %}
         <a href="/media/photos/{{ project.id }}/{{ img }}.jpg" class="glightbox p-1 zoom col-sm-3">
@@ -18,13 +24,20 @@
         </a>
         {% endfor %}
     </div>
+    </br>
+    <hr>
+    <h6>Похожие проекты:</h6>
+    <div class="row row-cols-2 row-cols-sm-6">
+        {% for prj in similar %}
 
-    <!-- TAGS -->
-    {% for i in tags %}
-    <a href="/tag/{{ i }}" class="btn btn-sm btn-outline-secondary ">{{ i }}</a>
-    {% endfor %}
-
-
+        <a href="/post/{{prj.id}}" style="height: 100%;">
+            <div class="col ">
+                <div class="card mb-2 assa zoom" style="background-image: url('{{prj.thumbnail}}')">
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
 </div>
 
 <script src="{% static 'js/glightbox.js' %}"></script>
@@ -70,23 +83,6 @@
     var lightboxInlineIframe = GLightbox({
         selector: '.glightbox4'
     });
-
-    /* var exampleApi = GLightbox({ selector: null });
-    exampleApi.insertSlide({
-        href: 'https://picsum.photos/1200/800',
-    });
-    exampleApi.insertSlide({
-        width: '500px',
-        content: '<p>Example</p>'
-    });
-    exampleApi.insertSlide({
-        href: 'https://www.youtube.com/watch?v=WzqrwPhXmew',
-    });
-    exampleApi.insertSlide({
-        width: '200vw',
-        content: document.getElementById('inline-example')
-    });
-    exampleApi.open(); */
 </script>
 
 {% endblock main_content %}

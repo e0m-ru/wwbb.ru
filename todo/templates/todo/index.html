@@ -1,16 +1,17 @@
 {% extends 'todo/footer.html' %}
 {% load static %}
 {% block main_content %}
-<main class="container">
-
+<main class="container p-0">
+    {% include "todo/image_gallery.html" %}
     <!-- ITEM 1 -->
-    <Section class="p-2 rounded bg-white-75 shadow-sm">
-        <h1 class="text-primary h3">ПРОИЗВОДСТВО <span class="text-secondary">МЕБЕЛИ</span></h1>
-        <!-- EXAMPLES 01-->
+    <Section class="p-2 p-sm-3 p-md-4 p-lg-5 bg-white-75 shadow-sm">
+        <h1 class="text-primary">ПРОИЗВОДСТВО <span class="text-secondary">МЕБЕЛИ</span></h1>
+
+   <!-- EXAMPLES 01-->
         <div class="grid-container col-44">
             {% for prj in example_01 %}
             <div class="grid_item">
-                <span class="number">{{prj.id}}</span>
+                <!-- <span class="number">{{prj.id}}</span> -->
                 <a href="/post/{{prj.id}}">
                     <img src="{{prj.thumbnail}}">
                 </a>
@@ -18,13 +19,10 @@
             </div>
             {% endfor %}
         </div>
-        <h5 class="text-primary h5">Мы готовы предложить вам <span class="text-secondary">высокое качество</span>
-            производства,
-            <span class="text-secondary">надежность и профессионализм </span>в
-            каждом аспекте нашей
-            работы, чтобы создать <span class="text-secondary">мебель, которая превзойдет ваши ожидания.</span>
-        </h5>
+
         <div class="col-sm">
+                    <h4 class="text-primary">Создаем мебель,<span class="text-secondary">идеально отражает ваш стиль и потребности.</span>
+                    </h4>
             <h2 class="h5">Мы предлагаем полный цикл производства корпусной и встроенной мебели на заказ. Благодаря
                 собственному производству и использованию качественных европейских материалов, мы создаем шкафы, которые
                 соответствуют любым требованиям и пожеланиям клиентов.
@@ -50,14 +48,14 @@
     </Section>
 
     <!-- ITEM 2 -->
-    <Section class="p-2 rounded bg-white-75">
+    <Section class="p-2 p-sm-3 p-md-4 p-lg-5 bg-white-75 shadow-sm">
         <div class="col-sm">
-            <h1 class="text-primary h3">РАЗРАБОТКА <span class="text-secondary">ПРОЕКТА</span></h1>
+            <h1 class="text-primary h3">ДИЗАЙН <span class="text-secondary">ПРОЕКТ</span></h1>
             <!-- EXAMPLES 02-->
             <div class="grid-container col-44">
                 {% for prj in example_02 %}
                 <div class="grid_item">
-                    <span class="number">{{prj.id}}</span>
+                    <!-- <span class="number">{{prj.id}}</span> -->
                     <a href="/post/{{prj.id}}">
                         <img src="{{prj.thumbnail}}">
                     </a>
@@ -68,40 +66,39 @@
         </div>
 
         <div class="row">
+                    <h4 class="text-secondary">Наше производство — <span class="text-primary">это безупречное качество,
+                            продуманные решения и индивидуальный подход в каждой детали.</span></h4>
             <div class="col-lg-3">
-                <p>Изготовление мебели на заказ с учетом индивидуальных размеров, на основе
-                    вашего проекта, эскиза или рисунка. Наша команда опытных специалистов разработает уникальное
-                    решение, соответствующее вашим требованиям и предпочтениям. Мы гарантируем высокое качество работы
-                    и внимательное отношение к деталям воплощая ваши мечты в реальность.</p>
+                <p>Изготавливаем мебель по вашим размерам и эскизам. Наши специалисты разработают индивидуальное
+                    решение, уделяя
+                    внимание каждой детали для точного воплощения ваших идей.</p>
             </div>
             <div class="col-lg-3">
-                <p>У нас вы можете приобрести не только готовую продукцию, но и заказать разработку оригинального
-                    дизайн-проекта любой сложности. Наша компания гарантирует широкий выбор мебели высокого качества,
-                    которая удовлетворит самые требовательные вкусы. Мы готовы воплотить в жизнь ваши идеи и создать
-                    уникальное пространство, отражающее ваш стиль и предпочтения.</p>
+                <p>Предлагаем как готовые решения, так и разработку дизайн-проектов любой сложности. Широкий ассортимент
+                    и высокое
+                    качество удовлетворят даже самые взыскательные запросы.</p>
             </div>
             <div class="col-lg-3">
-                <p>Наша компания предлагает мебель всех типов для дома и офиса, которая отличается высоким качеством и
-                    уникальным дизайном. Наша команда профессионалов поможет вам создать мебель, которая идеально
-                    подойдет для вашего интерьера и отразит вашу индивидуальность.</p>
+                <p>Производим все виды мебели для дома и офиса с уникальным дизайном. Наши профессионалы помогут создать
+                    изделия,
+                    которые идеально впишутся в ваш интерьер.</p>
             </div>
             <div class="col-lg-3">
-                <p>Мы учитываем не только ваши предпочтения в дизайне, но и ваш бюджет. Предлагаем широкий выбор
-                    качественных материалов, обширную цветовую гамму и многочисленные варианты комплектаций, доступные
-                    по оптимальной цене. Мы гарантируем оперативное выполнение заказа, чтобы вы могли наслаждаться вашей
-                    новой мебелью в кратчайшие сроки.</p>
+                <p>Работаем с разным бюджетом, предлагая оптимальные варианты материалов и комплектаций. Гарантируем
+                    оперативное
+                    изготовление заказов без потери качества.</p>
             </div>
         </div>
     </Section>
 
     <!-- ITEM 3-->
-    <Section class="p-2 rounded bg-white-75 shadow-sm">
-        <h1 class="text-primary h3">ДОСТАВКА <span class="text-secondary">И СОБОРКА</span></h1>
+    <Section class="p-2 p-sm-3 p-md-4 p-lg-5 bg-white-75 shadow-sm">
+        <h1 class="text-primary h3">ДОСТАВКА <span class="text-secondary">И СБОРКА</span></h1>
         <!-- EXAMPLES 03-->
         <div class="grid-container col-44">
             {% for prj in example_03 %}
             <div class="grid_item">
-                <span class="number">{{prj.id}}</span>
+                <!-- <span class="number">{{prj.id}}</span> -->
                 <a href="/post/{{prj.id}}">
                     <img src="{{prj.thumbnail}}">
                 </a>
@@ -112,6 +109,8 @@
 
 
         <div class="row">
+                    <h4 class="text-primary">Доверьте нам свои идеи,<span class="text-secondary"> и мы воплотим их в
+                            жизнь с точностью и заботой о комфорте.</span></h4>
             <div class="col-lg-3">
                 <p>Мы специализируемся на производстве мебели для гостиных и спален, кафе и ресторанов,
                     кухонь и

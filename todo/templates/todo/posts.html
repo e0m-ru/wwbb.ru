@@ -1,46 +1,45 @@
 {% extends 'todo/footer.html' %}
 {% block main_content %}
 
-<div class="container">
+<div class="container p-2 p-sm-3 p-md-4 p-lg-5 bg-white-75 shadow-sm mt-3">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        {% if user.is_authenticated %}
+        <a href="/create" class="btn btn-danger">Добавить пост</a>
+        {% endif %}
+    </div>
 
-    <div class="p-1 p-sm-2 rounded bg-white-75 shadow-sm">
-        <div class="">
-            <h1 class="h3 text-primary">наши проекты по тегу
-                {% if header %}
-                <button class="btn btn-secondary zoom">{{ header }}</button>
-                {% endif %}
-                {% if user.is_authenticated %}
+    <div class="">
+        {% if header == "кухня" %}
+        {% include "todo/components/kitchen.html" %}
+        {% elif header == "шкаф" %}
+        {% include "todo/components/locker.html" %}
+        {% elif header == "ванная" %}
+        {% include "todo/components/bath.html" %}
+        {% endif %}
 
-                <a href="/create" class="btn btn-danger">Добавить пост</a>
-
-                {% endif%}
-            </h1>
-
-            {% for i in tags %}
-            <a href="/tag/{{ i.slug }}" class="text-white btn-sm btn-secondary">{{ i }}</a>
-            {% endfor %}
-
-        </div>
-        <div class="row row-cols-2 row-cols-sm-4">
-            {% for prj in projects %}
-
-            <a href="/post/{{prj.id}}" style="width: 100%;">
-                <div class="col ">
-                    <div class="card mb-2 assa zoom" style=" background-image: url('{{prj.thumbnail}}')">
-                        <div class="text-white bg-primary-75 top">
-                            <b style="text-indent: 0;">{{prj.id}}</b>
-                        </div>
-                        <div class="text-white p-1 bg-primary-75 foo">
-                            <p style="text-indent: 0;">{{prj.title}}</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            {% endfor %}
-        </div>
-
+        {% for i in tags %}
+        <a href="/tag/{{ i.slug }}" class="text-white btn-sm btn-secondary">{{ i }}</a>
+        {% endfor %}
 
     </div>
+    <div class="row row-cols-2 row-cols-sm-4">
+        {% for prj in projects %}
+
+        <a href="/post/{{prj.id}}" style="width: 100%;">
+            <div class="col ">
+                <div class="card mb-2 assa zoom" style=" background-image: url('{{prj.thumbnail}}')">
+                    <!-- <div class="text-white bg-primary-75 top">
+                            <b style="text-indent: 0;">{{prj.id}}</b>
+                        </div> -->
+                    <div class="text-white p-1 bg-primary-75 foo">
+                        <p style="text-indent: 0;">{{prj.title}}</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
 </div>
+
 
 {% endblock main_content %}

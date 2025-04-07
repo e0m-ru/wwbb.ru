@@ -23,16 +23,16 @@
                 placeholder="Описание проекта"></textarea>
         </div>
         <div class="mb-3">
-            <label for="id_tags">#Тэги:</label>
+            <label for="id_tags">#Тэги (через запятую как минимум или "кухня" или "шкаф" или "ванная")</label>
             <input class="form-control" type="text" name="tags" maxlength="100" id="id_tags">
         </div>
         <div class="mb-3">
             <label for="id_rating">Рейтинг (чем больше тем выше в выдаче):</label>
             <input class="form-control" type="number" name="rating" id="id_rating" value="10">
         </div>
-        <div id="album" class="mb-3 border p-3">
+        <div id="album" class="mb-3">
             <h5 class="form-label">Фото Альбом</h5>
-            <input class="form-control" type="file" name="image" multiple="" accept="image/*" id="id_image">
+            <input class="form-control btn btn-info" type="file" name="image" multiple="" accept="image/*" id="id_image">
         </div>
         <div class="mb-3">
 

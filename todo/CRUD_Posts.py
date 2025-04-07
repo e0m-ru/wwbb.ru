@@ -103,7 +103,6 @@ def posts(request):
 def posts_by_tag(request, tag):
     db_Obj = Project.objects.all()
     insert_thumbnail(db_Obj)
-
     by_tags = []
     for i in db_Obj:
         tags = i.tags.lower().split(',')
