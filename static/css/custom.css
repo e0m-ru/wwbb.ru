@@ -146,12 +146,11 @@ header {
   opacity: 1;
 }
 
-.navbar .nav-item {
-  scale: 1;
+.navbar .nav-link{
   transition: all .33s;
   transition-property: all .3s;
 }
 
-.navbar .nav-item:hover {
+.navbar .nav-link:hover{
   scale: 1.05;
 }

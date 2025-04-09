@@ -17,13 +17,7 @@ urlpatterns = [
 
     # Comments CRUD urls
     path('comments', views.comments, name='comments'),
-    path('add_comment', views.add_comment, name='add_comment'),
-    path('update_comment/<int:com_id>',
-         views.update_comment, name='update_comment'),
-    path('delete_comment/<int:com_id>',
-         views.delete_comment, name='delete_comment'),
-    path('comment/<int:com_id>', views.read_comment, name='read_comment'),
-
+   
     path('tag/<str:tag>', views.posts_by_tag, name="tag"),
 
     # In all other cases

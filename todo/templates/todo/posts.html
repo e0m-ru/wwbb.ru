@@ -1,13 +1,8 @@
-{% extends 'todo/footer.html' %}
+{% extends 'todo/base.html' %}
+{% load static %}
 {% block main_content %}
 
 <div class="container p-2 p-sm-3 p-md-4 p-lg-5 bg-white-75 shadow-sm mt-3">
-    <div class="btn-group" role="group" aria-label="Basic example">
-        {% if user.is_authenticated %}
-        <a href="/create" class="btn btn-danger">Добавить пост</a>
-        {% endif %}
-    </div>
-
     <div class="">
         {% if header == "кухня" %}
         {% include "todo/components/kitchen.html" %}
@@ -40,6 +35,4 @@
         {% endfor %}
     </div>
 </div>
-
-
 {% endblock main_content %}

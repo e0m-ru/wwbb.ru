@@ -81,17 +81,13 @@
 </head>
 
 <body style="padding: 0;">
-    <span id="top"></span>
-
-    {% block header %}
-    {% endblock header %}
-
-
+    {% include "todo/components/header.html" %}
+    
+    
     {% block main_content %}
     {% endblock main_content %}
-
-    {% block footer %}
-    {% endblock footer %}
+    
+    {% include "todo/components/footer.html" %}
 
     <script src="{% static 'js/bootstrap.js' %}"></script>
 

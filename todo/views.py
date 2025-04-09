@@ -22,7 +22,6 @@ def main_page(request):
 
 
 def feedback(request):
-    
     all_posts = Project.objects.filter(public=True).order_by("-rating")[:12]
     insert_thumbnail(all_posts)
     context = {
@@ -56,3 +55,12 @@ def vk_api(request):
         'posts': [],
     }
     return render(request, 'todo/vk_wall.html', context)
+
+def comments(request):
+    comments = Comment.objects.filter(public=True)
+    context = {
+        'comments': comments,
+        'title': 'МебелЯ: Все отзывы',
+        'description':'Все отзывы на производство и установку корпусной мебели wwbb.ru',
+    }
+    return render(request, 'todo/comments.html', context)
