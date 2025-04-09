@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 import os
 from random import choice
 from djsite.settings import BASE_DIR, MEDIA_ROOT
@@ -13,9 +13,15 @@ def img_handler(instance, prj_id, s):
     album_path = os.path.join(PHOTO_PATH, prj_id)    
     img_path = os.path.join(album_path, f'{prj_id}_{str(s)}')    
 
-    with open(rf'{img_path}.jpg', 'wb+') as destination:
-        for chunk in instance.chunks():
-            destination.write(chunk)
+    # Convert to JPEG if necessary
+    try:
+        with Image.open(instance) as img:
+            img = img.convert("RGB")  # Ensure RGB mode for JPEG
+            img.save(rf'{img_path}.jpg', "JPEG", optimize=True, quality=90)
+    except UnidentifiedImageError:
+        print(f"Error: File {instance.name} is not a valid image.")
+        return
+
 
     outfile = img_path + ".thumbnail"
     with Image.open(rf'{img_path}.jpg') as im:

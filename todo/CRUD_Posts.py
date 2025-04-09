@@ -11,25 +11,28 @@ from django.shortcuts import get_object_or_404
 
 # CRUD Projects views functions
 
-
 @login_required
 def post_create(request):
-    # Multiple file upload
     if request.method == "POST":
-        form = ProjectForm(request.POST, request.FILES, instance=Project())
+        form = ProjectForm(request.POST, request.FILES)
         files = request.FILES.getlist('image')
-        form.album = 'assa'
-        form.save()
         if form.is_valid():
-            f = form.save(commit=False)
-            f.save()
-            img_path = f'{PHOTO_PATH}{f.id}'
-            os.mkdir(img_path)
-            for s, i in enumerate(files):
-                img_handler(i, f.id, s)
-            return redirect('/post/' + str(f.id))
+            project = form.save(commit=False)
+            project.save()
+            img_path = os.path.join(PHOTO_PATH, str(project.id))
+            os.makedirs(img_path, exist_ok=True)
+            for index, image in enumerate(files):
+                img_handler(image, project.id, index)
+            return redirect('/post/' + str(project.id))
         else:
-            render(request, 'todo/post_create.html', context)
+            context = {
+                'title': 'Добавить пост',
+                'form': form,
+                'description': 'Создание поста на сайте wwbb.ru',
+                'posts': get_wall_posts(),
+                'errors': form.errors,
+            }
+            return render(request, 'todo/post_create.html', context)
     
     form = ProjectForm()
     context = {
