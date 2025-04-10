@@ -1,7 +1,6 @@
 from random import shuffle
 from django.shortcuts import render
 from .CRUD_Posts import *
-from .comments import *
 from .search import search
 import re
 from djsite.settings import MEDIA_ROOT
@@ -57,9 +56,7 @@ def vk_api(request):
     return render(request, 'todo/vk_wall.html', context)
 
 def comments(request):
-    comments = Comment.objects.filter(public=True)
     context = {
-        'comments': comments,
         'title': 'МебелЯ: Все отзывы',
         'description':'Все отзывы на производство и установку корпусной мебели wwbb.ru',
     }
