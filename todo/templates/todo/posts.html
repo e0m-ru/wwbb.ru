@@ -1,9 +1,9 @@
-{% extends 'todo/base.html' %}
+{% extends 'todo/base/base.html' %}
 {% load static %}
-{% block main_content %}
 
-<div class="container p-2 p-sm-3 p-md-4 p-lg-5 bg-white-75 shadow-sm mt-3">
-    <div class="">
+{% block main_content %}
+<div class="container">
+    <div>
         {% if header == "кухня" %}
         {% include "todo/components/kitchen.html" %}
         {% elif header == "шкаф" %}
@@ -11,28 +11,19 @@
         {% elif header == "ванная" %}
         {% include "todo/components/bath.html" %}
         {% endif %}
-
-        {% for i in tags %}
-        <a href="/tag/{{ i.slug }}" class="text-white btn-sm btn-secondary">{{ i }}</a>
-        {% endfor %}
-
     </div>
-    <div class="row row-cols-2 row-cols-sm-4">
-        {% for prj in projects %}
+    {% include 'todo/components/pagination.html' %}
 
-        <a href="/post/{{prj.id}}" style="width: 100%;">
-            <div class="col ">
-                <div class="card mb-2 assa zoom" style=" background-image: url('{{prj.thumbnail}}')">
-                    <!-- <div class="text-white bg-primary-75 top">
-                            <b style="text-indent: 0;">{{prj.id}}</b>
-                        </div> -->
-                    <div class="text-white p-1 bg-primary-75 foo">
-                        <p style="text-indent: 0;">{{prj.title}}</p>
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+        {% for prj in page_obj %}
+        <a href="/post/{{prj.id}}" class="col-sm-3">
+            <img src="{{ prj.thumbnail}}">
+            <p>{{prj.title}}</p>
         </a>
         {% endfor %}
     </div>
+
+    {% include 'todo/components/pagination.html' %}
+
 </div>
 {% endblock main_content %}

@@ -1,0 +1,92 @@
+{% extends 'todo/base/base.html' %}
+{% load static %}
+
+{% block main_content %}
+<div class="container mb-5 p-3 px-5 rounded bg-white-75 shadow-sm">
+    <h1 class="text-secondary h4">Добавление нового проекта</h1>
+    <!-- ------------- -->
+    <form id="post_form" method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+        {% endfor %}
+
+        <div class="mb-3">
+            <label for="id_public">Опубликован:</label>
+            <input class="" type="checkbox" name="public" id="id_public" checked="">
+            <input class="form-control" type="text" name="title" maxlength="100" required="" id="id_title"
+                placeholder="Заголовок">
+        </div>
+        <div class="mb-3">
+            <textarea class="form-control" name="description" cols="20" rows="2" id="id_description"
+                placeholder="Описание проекта"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="id_tags">#Тэги (через запятую как минимум или "кухня" или "шкаф" или "ванная")</label>
+            <input class="form-control" type="text" name="tags" maxlength="100" id="id_tags">
+        </div>
+
+<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+    <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+
+    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+    <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
+
+    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+    <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
+</div>
+
+        <div class="mb-3">
+            <label for="id_rating">Рейтинг (чем больше тем выше в выдаче):</label>
+            <input class="form-control" type="number" name="rating" id="id_rating" value="10">
+        </div>
+        <div id="album" class="mb-3">
+            <h5 class="form-label">Фото Альбом</h5>
+            <input class="form-control btn btn-info" type="file" name="image" multiple="" accept="image/*"
+                id="id_image">
+        </div>
+        <div class="mb-3">
+
+        </div>
+        <div class="d-grid gap-2">
+            <a href="/posts" class="btn btn-primary">Отмена</a>
+            <input class="btn btn-secondary" type="submit" name="" value="Схранить проект" class="btn btn-secondary">
+            <a href="#VK" class="btn btn-info">Импорт из ВК</a>
+        </div>
+    </form>
+    <hr>
+</div>
+
+<!-- ------------- -->
+<div class="container mb-5 p-3 px-5 rounded bg-white-75 shadow-sm">
+    <h4 id="VK"> ИМПОРТ ПОСТОВ ИЗ ВК </h4>
+    <div class="row row-cols-2 row-cols-sm-4">
+
+        {% for post in posts %}
+        <div id="{{post.id}}" class="col clickable-block">
+            <div class="card mb-2 assa zoom" style=" background-image: url('{{post.attachments.0.photo.sizes.2.url}}')">
+                <div class="text-white bg-primary-75 top">
+                    <b style="text-indent: 0;">{{post.id}}</b>
+                </div>
+                <div class="text-white p-1 bg-primary-75 foo">
+                    <p id="description" style="text-indent: 0; font-size: xx-small;">{{ post.text }}</p>
+                </div>
+            </div>
+            <div style="display: none;">
+                {% for img in post.attachments %}
+                {% if img.type is not none and img.type == "photo" %}
+                <a href="{{ img.photo.orig_photo.url }}" id="img_{{ img.photo.id }}"></a>
+                <img src="{{ img.photo.sizes.0.url }}" id="thumb_{{ img.photo.id }}">
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="{% static 'js/vk_repost.js' %}" async="async"></script>
+
+{% endblock main_content %}
