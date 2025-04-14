@@ -1,4 +1,23 @@
-.img-thumbnail,
+:root {
+    --bs-primary: #28a985;
+    --bs-info: #2880a9;
+    --bs-secondary: #d9646a;
+    --bs-primary-rgb: 40, 169, 133;
+    --bs-secondary-rgb: 217, 100, 106;
+}
+
+body {
+    background-image: url(/static/patterns/01_v.svg);
+    background-size: 2rem;
+}
+.navbar-toggler {
+    color: var(--bs-white);
+    background-color: transparent;
+    border: var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);
+    border-radius: var(--bs-navbar-toggler-border-radius);
+    transition: var(--bs-navbar-toggler-transition);
+}
+
 .navbar .btn {
     transition: all .1s ease-in-out;
 }
@@ -7,11 +26,68 @@
     box-shadow: 0px 4px 8px rgba(20, 84, 66, 0.33);
     transform: scale(1.05);
 }
-.img-thumbnail:hover{
-    box-shadow: 0px 4px 8px rgba(20, 84, 66, 0.33);
-    transform: scale(1.01);
+
+.glightbox:hover {
+    cursor: zoom-in;
 }
 
-.glightbox:hover{
-    cursor: zoom-in;
+/* GRID */
+.ww_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.ww_grid_6 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+}
+.ww_grid_8 {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1rem;
+}
+
+.ww_grid_item {
+    height: 8rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    overflow: hidden;
+    position: relative;
+    transition: all .3s ease-in-out;
+}
+
+.ww_grid_item:hover {
+    background-size: 110% auto;
+}
+
+.ww_grid_item .caption {
+    position: absolute;
+    background-color: rgba(40, 169, 133, 0.75);
+    bottom: 0;
+    border-radius: 1rem 1rem 0 0;
+    transition: all .3s ease-in-out;
+}
+
+.ww_grid_item:hover p.caption {
+    bottom: -10%;
+}
+
+
+@media (max-width: 767px) {
+    .ww_grid_6 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    .ww_grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .ww_grid_6,
+    .ww_grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }

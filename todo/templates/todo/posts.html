@@ -3,7 +3,7 @@
 
 {% block main_content %}
 <div class="container">
-    <div>
+    <div class="mt-3">
         {% if header == "кухня" %}
         {% include "todo/components/kitchen.html" %}
         {% elif header == "шкаф" %}
@@ -12,13 +12,14 @@
         {% include "todo/components/bath.html" %}
         {% endif %}
     </div>
-    {% include 'todo/components/pagination.html' %}
 
-    <div class="row">
+    <div class="ww_grid mb-4">
         {% for prj in page_obj %}
-        <a href="/post/{{prj.id}}" class="col-sm-3">
-            <img src="{{ prj.thumbnail}}">
-            <p>{{prj.title}}</p>
+        <a href="/post/{{prj.id}}">
+            <div class="ww_grid_item rounded overflow-hidden"
+                style="background-image: url('{{ prj.thumbnail }}'); height: 8rem;">
+                <p class="caption px-3 rounded text-white">{{prj.title}}</p>
+            </div>
         </a>
         {% endfor %}
     </div>

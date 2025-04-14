@@ -121,7 +121,6 @@ def posts_by_tag(request, tag):
         'projects': db_Obj,
         'description': f'Фото мебели {tag} wwbb.ru',
         "page_obj": page_obj,
-        "paginator": paginator,
     }
     return render(request, 'todo/posts.html', context)
 

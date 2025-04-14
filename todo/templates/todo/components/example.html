@@ -1,8 +1,9 @@
-<div class="card col-6 col-sm-3 text-center" style="width: 18rem;">
-    <a href="/post/{{prj.id}}">
-        <img src="{{prj.thumbnail}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <p class="card-text">{{prj.title}}</p>
-        </div>
-    </a>
+<div class="col-6 col-sm-3 text-center">
+        <a href="/post/{{prj.id}}">
+            <div class="ww_grid_item rounded overflow-hidden"
+                style="background-image: url('{{ prj.thumbnail }}'); height: 8rem;">
+                <p class="caption px-3 rounded text-white">{{prj.title}}</p>
+            </div>
+        </a>
 </div>
+

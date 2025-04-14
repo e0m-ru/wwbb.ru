@@ -3,11 +3,11 @@
 {% block main_content %}
 <main class="container">
     <!-- ITEM 1 -->
-    <Section>
-        <h1 class="text-primary h1">ПРОИЗВОДСТВО <span class="text-secondary">МЕБЕЛИ</span></h1>
+    <Section class="p-1 p-sm-3 p-md-4 p-lg-5 shadow-sm bg-white my-1">
+        <h1 class="text-secondary h1">ПРОИЗВОДСТВО <span class="text-primary">МЕБЕЛИ</span></h1>
         <!-- EXAMPLES 01-->
 
-        <div class="row justify-content-md-center">
+        <div class="row justify-content-md-center p-0 m-0">
             {% for prj in example_01 %}
                 {% include "todo/components/example.html" with prj=prj %}
             {% endfor %}
@@ -34,8 +34,9 @@
     </Section>
 
     <!-- ITEM 2 -->
-    <Section>
-        <h2>ДИЗАЙН <span>ПРОЕКТ</span></h2>
+    <Section class="p-1 p-sm-3 p-md-4 p-lg-5 shadow-sm bg-white my-1">
+
+        <h2 class="text-secondary">ДИЗАЙН <span class="text-primary">ПРОЕКТ</span></h2>
         <!-- EXAMPLES 02-->
         <div class="row justify-content-md-center">
             {% for prj in example_02 %}
@@ -54,8 +55,9 @@
     </Section>
 
     <!-- ITEM 3-->
-    <Section>
-        <h2>ДОСТАВКА <span>И СБОРКА</span></h2>
+    <Section class="p-1 p-sm-3 p-md-4 p-lg-5 shadow-sm bg-white my-1">
+
+        <h2 class="text-primary">ДОСТАВКА <span class="text-secondary">И СБОРКА</span></h2>
         <!-- EXAMPLES 03-->
         <div class="row justify-content-md-center">
             {% for prj in example_03 %}
