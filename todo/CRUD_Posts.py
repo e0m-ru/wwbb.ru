@@ -7,6 +7,7 @@ from .img_handler import *
 import random
 from .vk_repost import get_wall_posts
 from django.shortcuts import get_object_or_404
+from django.core.paginator import Paginator
 
 
 # CRUD Projects views functions
@@ -23,7 +24,7 @@ def post_create(request):
             os.makedirs(img_path, exist_ok=True)
             for index, image in enumerate(files):
                 img_handler(image, project.id, index)
-            return redirect('/post/' + str(project.id))
+            return redirect(f'/post/{str(project.id)}')
         else:
             context = {
                 'title': 'Добавить пост',
@@ -32,7 +33,7 @@ def post_create(request):
                 'posts': get_wall_posts(),
                 'errors': form.errors,
             }
-            return render(request, 'todo/post_create.html', context)
+            return render(request, 'todo/CRUD/post_create.html', context)
     
     form = ProjectForm()
     context = {
@@ -41,7 +42,7 @@ def post_create(request):
         'description': 'Создание поста на сайте wwbb.ru',
         'posts': get_wall_posts(),
     }
-    return render(request, 'todo/post_create.html', context)
+    return render(request, 'todo/CRUD/post_create.html', context)
 
 
 def post_read(request, post_id):
@@ -54,7 +55,7 @@ def post_read(request, post_id):
         'description': f'Проект {post.title} wwbb.ru ',
         'similar': insert_thumbnail(similar_posts(post_id)),
     }
-    return render(request, 'todo/post_read.html', context)
+    return render(request, 'todo/CRUD/post_read.html', context)
 
 
 @login_required
@@ -74,7 +75,7 @@ def post_update(request, post_id):
         'form': form,
         'description': 'Редактирование материала wwbb.ru',
     }
-    return render(request, 'todo/post_update.html', context)
+    return render(request, 'todo/CRUD/post_update.html', context)
 
 
 @login_required
@@ -88,13 +89,13 @@ def post_delete(request, post_id):
         os.rmdir(f'{PHOTO_PATH}{post_id}/')
         db_Obj.delete()
         return redirect('/posts')
-    return render(request, 'todo/post_delete.html', {'project': db_Obj, 'title': 'Удаление поста', 'album': album})
+    return render(request, 'todo/CRUD/post_delete.html', {'project': db_Obj, 'title': 'Удаление поста', 'album': album})
 
 
 def posts(request):
     all_posts = Project.objects.filter(public=True)
     insert_thumbnail(all_posts)
-    all_posts.sort(key = lambda x: x.rating , reverse=True)
+    all_posts.sort(key = lambda x: x.id , reverse=True)
     context = {
         'title': 'примеры работ',
         'projects': all_posts,
@@ -102,22 +103,24 @@ def posts(request):
     }
     return render(request, 'todo/posts.html', context)
 
-    
+
+
 def posts_by_tag(request, tag):
-    db_Obj = Project.objects.all()
+    db_Obj = Project.objects.filter(
+        public=True,
+        tags__icontains=tag
+    )
     insert_thumbnail(db_Obj)
-    by_tags = []
-    for i in db_Obj:
-        tags = i.tags.lower().split(',')
-        tags = map(lambda x: x.strip(), tags)
-        if tag.lower() in tags:
-            by_tags.append(i)
-    by_tags.sort(key = lambda x: x.rating , reverse=True)
+    paginator = Paginator(db_Obj, 12)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        'title': 'МебелЯ: ' + str(tag),
-        'header': str(tag),
-        'projects': by_tags,
-        'description': f'Фото по тегу {tag} wwbb.ru',
+        'title': f'МебелЯ: {tag}',
+        'header': tag,
+        'projects': db_Obj,
+        'description': f'Фото мебели {tag} wwbb.ru',
+        "page_obj": page_obj,
     }
     return render(request, 'todo/posts.html', context)
 

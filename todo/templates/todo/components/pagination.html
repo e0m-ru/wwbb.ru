@@ -1,0 +1,42 @@
+{% if page_obj.has_other_pages %}
+<nav class="d-flex justify-content-center" aria-label="Навигация по страницам">
+    <ul class="pagination justify-content-center pagination-sm">
+        {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page=1">&lt&lt</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&lt</a></li>
+        {% else %}
+        <li class="page-item disabled"><a class="page-link" href="№">&lt&lt</a></li>
+        <li class="page-item disabled"><a class="page-link" href="№">&lt</a></li>
+        {% endif %}
+            {% if page_obj.number > 2 %}
+            <li class="page-item disabled">
+                <span class="page-link">...</span>
+            </li>
+            {% endif %}
+
+            
+        {% for num in page_obj.paginator.page_range %}
+        {% if num >= page_obj.number|add:"-1" and num <= page_obj.number|add:"1" %}
+        <li class="page-item    
+            {% if page_obj.number == num %}
+                 active
+            {% endif %}">
+            <a class="page-link" href="?search={{search_phrase}}&page={{ num }}">{{ num }}</a>
+        </li>
+            {% endif %}
+        {% endfor %}
+    {% if page_obj.number < page_obj.paginator.num_pages|add:"-1" %} <li class="page-item disabled">
+        <span class="page-link">...</span>
+        </li>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&gt</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">&gt&gt</a></li>
+        {% else %}
+        <li class="page-item disabled"><a class="page-link" href="#">&gt</a></li>
+        <li class="page-item disabled"><a class="page-link" href="#">&gt&gt</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
