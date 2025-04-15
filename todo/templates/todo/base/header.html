@@ -1,47 +1,52 @@
 {% load static %}
 <!-- NAVIGATION -->
-<nav class=" navbar navbar-expand-lg bg-primary shadow">
-  <div class="container container-fluid">
+<nav class="bg-primary shadow">
+  <div class="container navbar navbar-dark navbar-expand-lg">
     <!-- Logo, Title -->
-    <a class="col-1 navbar-brand" href="/">
+    <a class="navbar-brand ms-2" href="/">
       <img src="{% static 'favicon/favicon_white.svg' %}" height="50px">
     </a>
-<div class="col-sm-2">
-    <!-- PHONE  -->
-    <a class="nav-item btn m" href="tel:+79260480480">
-      <img src="{% static 'icons/telephone-outbound-fill.svg' %}" height="30px">
-    </a>
-    <!-- TELEGRAM -->
-    <a class="nav-item btn m" href="https://t.me/+79260480480" target="_blank">
-      <img src="{% static 'icons/telegram_primary.svg' %}" height="30px">
-    </a>
-    <!-- WHATSUP -->
-    <a class="nav-item btn m" href="https://wa.me/+79260480480?text=С сайта:" target="_blank">
-      <img src="{% static 'icons/whatsapp.svg' %}" height="30px">
-    </a>
-</div>
+    <div class="btn-group">
+      <!-- PHONE  -->
+      <a class="nav-item btn" href="tel:+79260480480">
+        <img src="{% static 'icons/telephone-outbound-fill.svg' %}" height="30px">
+      </a>
+      <!-- TELEGRAM -->
+      <a class="nav-item btn" href="https://t.me/+79260480480" target="_blank">
+        <img src="{% static 'icons/telegram_primary.svg' %}" height="30px">
+      </a>
+      <!-- WHATSUP -->
+      <a class="nav-item btn" href="https://wa.me/+79260480480?text=С сайта:" target="_blank">
+        <img src="{% static 'icons/whatsapp.svg' %}" height="30px">
+      </a>
+    </div>
     <!-- NAVBAR_TOGGLE_ICON -->
-    <button class="col-2 navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse m-auto" id="navbarSupportedContent">
-      <div class="navbar-nav me-auto mb-lg-0">
-        <a class="nav-item btn m-1 btn-secondary text-white" href="/tag/шкаф">Шкаф</a>
-        <a class="nav-item btn m-1 btn-secondary text-white" href="/tag/кухня">Кухня</a>
-        <a class="nav-item btn m-1 btn-secondary text-white" href="/tag/ванная">Ванная</a>
-        <a class="nav-item btn m-1 btn-info text-white" href="/comments">Отзывы</a>
-        <a class="nav-item btn m-1 btn-info text-white" href="/feedback">Контакты</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="navbar-nav">
+                <div class="btn-group mx-3">
+        <a class="nav-item btn btn-secondary text-white" href="/tag/шкаф">Шкаф</a>
+        <a class="nav-item btn btn-secondary text-white" href="/tag/кухня">Кухня</a>
+        <a class="nav-item btn btn-secondary text-white" href="/tag/ванная">Ванная</a>
+                </div>
+        <div class="btn-group mx-3">
+        <a class="nav-link btn btn-info text-white" href="/comments">Отзывы</a>
+        <a class="nav-link btn btn-info text-white" href="/feedback">Контакты</a>
+        </div>
         {% if user.is_authenticated %}
-        <a class="nav-item btn m-1 btn-warning text-white" href="/create">новый&nbsp;пост</a>
+        <a class="nav-item btn btn-warning text-white" href="/create">новый&nbsp;пост</a>
         {% endif %}
       </div>
       <!-- SEARCH -->
-      <form class="col-sm-3 m-1 nav-item d-flex" role="search" action="/search" method="get">
+      <form class="col-sm-3 nav-item d-flex" role="search" action="/search" method="get">
         <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск" name="search"
           pattern="[A-Za-zА-Яа-яЁё0-9 \ ]*">
       </form>
     </div>
   </div>
-</div>
+  </div>
 </nav>
