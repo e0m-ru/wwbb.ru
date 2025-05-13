@@ -15,7 +15,7 @@ def main_page(request):
         'example_01': all_posts[:4],
         'example_02': all_posts[4:8],
         'example_03': all_posts[8:12],
-        'description': 'Сайт производителя корпусной мебели на заказ https://wwbb.ru.',
+        'description': 'Сайт производства корпусной мебели на заказ.',
     }
     return render(request, 'todo/index.html', context)
 

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block main_content %}
-<div class="container mb-5 p-3 px-5 rounded bg-white-75 shadow-sm">
+<div class="container mb-5 p-3 px-5 rounded bg-white rounded shadow-sm">
     <h1 class="text-secondary h4">Добавление нового проекта</h1>
     <!-- ------------- -->
     <form id="post_form" method="post" action="" enctype="multipart/form-data">
@@ -27,7 +27,7 @@
             <input class="form-control" type="text" name="tags" maxlength="100" id="id_tags">
         </div>
 
-<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+<!-- <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
     <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
     <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
 
@@ -36,7 +36,7 @@
 
     <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
     <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
-</div>
+</div> -->
 
         <div class="mb-3">
             <label for="id_rating">Рейтинг (чем больше тем выше в выдаче):</label>
@@ -44,16 +44,16 @@
         </div>
         <div id="album" class="mb-3">
             <h5 class="form-label">Фото Альбом</h5>
-            <input class="form-control btn btn-info" type="file" name="image" multiple="" accept="image/*" required="required"
+            <input class="form-control " type="file" name="image" multiple="" accept="image/*" required="required"
                 id="id_image">
         </div>
         <div class="mb-3">
 
         </div>
-        <div class="d-grid gap-2">
-            <a href="/posts" class="btn btn-primary">Отмена</a>
-            <input class="btn btn-secondary" type="submit" name="" value="Схранить проект" class="btn btn-secondary">
-            <a href="#VK" class="btn btn-info">Импорт из ВК</a>
+        <div class="btn-group">
+            <a href="/" class="btn btn-primary text-white">Отмена</a>
+            <input class="btn btn-secondary text-white" type="submit" name="" value="Схранить проект" class="btn btn-secondary">
+            <a href="#VK" class="btn btn-info text-white">Импорт из ВК</a>
         </div>
     </form>
     <hr>

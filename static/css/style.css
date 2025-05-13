@@ -93,3 +93,13 @@ body {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
+.svg-icon {
+    opacity: 0.85;
+    fill: var(--bs-white);
+    width: 1rem;
+    margin-right: .5rem;
+}
+.btn:hover {
+    color: var(--bs-white);
+}

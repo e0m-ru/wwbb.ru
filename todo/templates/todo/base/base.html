@@ -4,26 +4,28 @@
 <html lang="ru">
 
 <head>
-    <title>{{ project.title }} {{title}} wwbb.ru</title>
-    
     <!-- Meta info -->
+    <title>{{ project.title }} {{title}} </title>
+    <meta name="description" content="{{ project.description }}"/>
+    
     {% include "todo/base/meta.html" %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
+
     <!-- Yandex.Metrika counter -->
     <script src="{% static 'js/yandexMetrika.js' %}"></script>
 </head>
 
 <body>
     {% include "todo/base/header.html" %}
-    
+
     {% block main_content %}
     {% endblock main_content %}
-    
+
     {% include "todo/base/footer.html" %}
 
-<!-- bootstrap -->
-<script src="{% static 'js/bootstrap.js' %}"></script>
+    <!-- bootstrap -->
+    <script src="{% static 'js/bootstrap.js' %}"></script>
 </body>
+
 </html>

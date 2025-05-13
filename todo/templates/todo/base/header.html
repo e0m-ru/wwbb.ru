@@ -38,14 +38,14 @@
         <a class="nav-link btn btn-info text-white" href="/feedback">Контакты</a>
         </div>
         {% if user.is_authenticated %}
-        <a class="nav-item btn btn-warning text-white" href="/create">новый&nbsp;пост</a>
+        <a class="nav-item btn btn-warning text-white me-2" href="/create">новый&nbsp;пост</a>
         {% endif %}
-      </div>
-      <!-- SEARCH -->
-      <form class="col-sm-3 nav-item d-flex" role="search" action="/search" method="get">
-        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск" name="search"
+        <!-- SEARCH -->
+        <form class="nav-item d-flex" role="search" action="/search" method="get">
+          <input class="form-control mx-3" type="search" placeholder="Поиск" aria-label="Поиск" name="search"
           pattern="[A-Za-zА-Яа-яЁё0-9 \ ]*">
-      </form>
+        </form>
+      </div>
     </div>
   </div>
   </div>
