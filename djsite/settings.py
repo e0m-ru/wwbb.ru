@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'H8-0MY34wXC_ium06s04aDLfYg5i9glsN8Xdchnpezg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True  # Убедитесь, что включен режим отладки для локальной проверки
+DEBUG = False  # Убедитесь, что включен режим отладки для локальной проверки
 
 ALLOWED_HOSTS = ['*']
 
