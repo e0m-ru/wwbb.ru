@@ -88,7 +88,7 @@ def post_delete(request, post_id):
             os.remove(f'{PHOTO_PATH}{post_id}/{img}.thumbnail')
         os.rmdir(f'{PHOTO_PATH}{post_id}/')
         db_Obj.delete()
-        return redirect('/posts')
+        return redirect('/')
     return render(request, 'todo/CRUD/post_delete.html', {'project': db_Obj, 'title': 'Удаление поста', 'album': album})
 
 
