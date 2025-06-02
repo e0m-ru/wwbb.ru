@@ -22,42 +22,167 @@
             <textarea class="form-control" name="description" cols="20" rows="2" id="id_description"
                 placeholder="Описание проекта"></textarea>
         </div>
-        <div class="mb-3">
-            <label for="id_tags">#Тэги (через запятую как минимум или "кухня" или "шкаф" или "ванная")</label>
-            <input class="form-control" type="text" name="tags" maxlength="100" id="id_tags">
+
+        <!-- Выбор тегов -->
+
+        <!-- Шаг 1: Выбор типа мебели -->
+        <h4 class="outline-primary">обязательный теги: </h4>
+        <div class="btn-group btn-group" role="group" aria-label="Basic radio toggle button group" id="step1">
+            <input type="radio" class="btn-check" name="furniture-type" id="шкаф" value="шкаф" autocomplete="off"
+                checked>
+            <label class="btn btn-outline-primary btn-lg" for="шкаф">шкаф</label>
+            <input type="radio" class="btn-check" name="furniture-type" id="кухня" value="кухня" autocomplete="off">
+            <label class="btn btn-outline-primary btn-lg" for="кухня">кухня</label>
+            <input type="radio" class="btn-check" name="furniture-type" id="ванная" value="ванная" autocomplete="off">
+            <label class="btn btn-outline-primary btn-lg" for="ванная">ванная</label>
         </div>
 
-<!-- <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+        <!-- Шаг 2: Опции для шкафа -->
+        <div>
+            <h5>дополнительные теги: </h5>
+            <input type="checkbox" class="btn-check" name="furniture-type" id="купе" value="купе" autocomplete="off">
+            <label class="btn btn-outline-secondary btn-sm" for="купе">купе</label>
+            <input type="checkbox" class="btn-check" name="furniture-type" id="зеркало" value="зеркало"
+                autocomplete="off">
+            <label class="btn btn-outline-secondary btn-sm" for="зеркало">зеркало</label>
+            <input type="checkbox" class="btn-check" name="furniture-type" id="гардероб" value="гардероб"
+                autocomplete="off">
+            <label class="btn btn-outline-secondary btn-sm" for="гардероб">гардероб</label>
+            <input type="checkbox" class="btn-check" name="furniture-type" id="полки" value="полки" autocomplete="off">
+            <label class="btn btn-outline-secondary btn-sm" for="полки">полки</label>
+            <input type="checkbox" class="btn-check" name="furniture-type" id="эмаль" value="эмаль" autocomplete="off">
+            <label class="btn btn-outline-secondary btn-sm" for="эмаль">эмаль</label>
+            <input type="checkbox" class="btn-check" name="furniture-type" id="пластик" value="пластик"
+                autocomplete="off">
+            <label class="btn btn-outline-secondary btn-sm" for="пластик">пластик</label>
+            <input type="checkbox" class="btn-check" name="furniture-type" id="плёнка" value="плёнка"
+                autocomplete="off">
+            <label class="btn btn-outline-secondary btn-sm" for="плёнка">плёнка</label>
+            <input type="checkbox" class="btn-check" name="furniture-type" id="краска" value="краска"
+                autocomplete="off">
+            <label class="btn btn-outline-secondary btn-sm" for="краска">краска</label>
+            <input type="checkbox" class="btn-check" name="furniture-type" id="лак" value="лак" autocomplete="off">
+            <label class="btn btn-outline-secondary btn-sm" for="лак">лак</label>
+            <input type="checkbox" class="btn-check" name="furniture-type" id="раковина" value="раковина"
+                autocomplete="off">
+            <label class="btn btn-outline-secondary btn-sm" for="раковина">раковина</label>
+            <input type="checkbox" class="btn-check" name="furniture-type" id="встроенный" value="встроенный"
+                autocomplete="off">
+            <label class="btn btn-outline-secondary btn-sm" for="встроенный">встроенный</label>
+            <input type="checkbox" class="btn-check" name="furniture-type" id="ниша" value="ниша"
+                autocomplete="off">
+            <label class="btn btn-outline-secondary btn-sm" for="ниша">ниша</label>
+            <input type="checkbox" class="btn-check" name="furniture-type" id="стол" value="стол"
+                autocomplete="off">
+            <label class="btn btn-outline-secondary btn-sm" for="стол">стол</label>
+            <input type="checkbox" class="btn-check" name="furniture-type" id="перегородка" value="перегородка"
+                autocomplete="off">
+            <label class="btn btn-outline-secondary btn-sm" for="перегородка">перегородка</label>
 
-    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
-
-    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
-</div> -->
-
-        <div class="mb-3">
-            <label for="id_rating">Рейтинг (чем больше тем выше в выдаче):</label>
-            <input class="form-control" type="number" name="rating" id="id_rating" value="10">
         </div>
+
+        <!-- Шаг 3: Выбор цвета -->
+        <h5 class="form-label">цвет:</h5>
+        <div class="m-2">
+            <div class="btn-group" role="group" aria-label="Color Picker">
+
+                <label class="btn btn-outline-danger" for="red" style="background-color: red;"><input type="checkbox"
+                        class="" name="furniture-type" id="red" value="красный" autocomplete="off"> </label>
+                <label class="btn btn-outline-warning" for="orange" style="background-color: orange;"><input
+                        type="checkbox" class="" name="furniture-type" id="orange" value="оранжевый"
+                        autocomplete="off"></label>
+                <label class="btn btn-outline-warning" for="yellow" style="background-color: yellow;"><input
+                        type="checkbox" class="" name="furniture-type" id="yellow" value="жёлтый"
+                        autocomplete="off"></label>
+
+                <label class="btn btn-outline-success" for="green" style="background-color: green;">
+                    <input type="checkbox" class="" name="furniture-type" id="green" value="зелёный" autocomplete="off">
+                </label>
+
+                <label class="btn btn-outline-primary" for="blue" style="background-color: lightblue;">
+                    <input type="checkbox" class="" name="furniture-type" id="blue" value="синий" autocomplete="off">
+                </label>
+
+                <label class="btn btn-outline-primary" for="blue" style="background-color: blue;">
+                    <input type="checkbox" class="" name="furniture-type" id="blue" value="синий" autocomplete="off">
+                </label>
+
+
+                <label class="btn btn-outline-secondary" for="purple" style="background-color: purple;"><input
+                        type="checkbox" class="" name="furniture-type" id="purple" value="фиолетовый"
+                        autocomplete="off"></label>
+
+
+                <label class="btn btn-outline-secondary" for="gray" style="background-color: gray;"><input
+                        type="checkbox" class="" name="furniture-type" id="gray" value="серый"
+                        autocomplete="off"></label>
+
+                <label class="btn btn-outline-light" for="white"
+                    style="background-color: white; border: 1px solid #ccc;"><input type="checkbox" class=""
+                        name="furniture-type" id="white" value="белый" autocomplete="off"></label>
+
+                <label class="btn btn-outline-dark" for="black" style="background-color: black;"><input type="checkbox"
+                        class="" name="furniture-type" id="black" value="чёрный" autocomplete="off"></label>
+            </div>
+        </div>
+        <!-- Итоговое поле -->
+        <div class="mb-3">
+            <input class="form-control" type="text" name="tags" maxlength="100" id="tags">
+        </div>
+
+        <label for="id_rating">Рейтинг (чем больше тем выше в выдаче):</label>
+        <input class="form-control" type="number" name="rating" id="id_rating" value="10">
+
         <div id="album" class="mb-3">
             <h5 class="form-label">Фото Альбом</h5>
-            <input class="form-control " type="file" name="image" multiple=""  required="required"
-                id="id_image">
+            <input class="form-control " type="file" name="image" multiple="" required="required" id="id_image">
         </div>
         <div class="mb-3">
 
         </div>
         <div class="btn-group">
             <a href="/" class="btn btn-primary text-white">Отмена</a>
-            <input class="btn btn-secondary text-white" type="submit" name="" value="Схранить проект" class="btn btn-secondary">
+            <input class="btn btn-secondary text-white" type="submit" name="" value="Схранить проект"
+                class="btn btn-secondary">
             <a href="#VK" class="btn btn-info text-white">Импорт из ВК</a>
         </div>
     </form>
     <hr>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('post_form');
+        const furnitureTypeRadios = document.querySelectorAll('input[name="furniture-type"]');
+        const tagsInput = document.getElementById('tags');
+        const updateButton = document.getElementById('update-tags');
+
+
+        // 2. Обновляем теги при изменении любых чекбоксов
+        form.addEventListener('change', function () {
+            updateTags();
+        });
+
+        // 3. Функция для сбора всех выбранных значений
+        function updateTags() {
+            let tags = []; // Создаем новый массив для тегов
+            // Сначала добавляем выбранный тип мебели (радио-кнопка)
+            const selectedType = document.querySelector('input[type="radio"]:checked');
+            if (selectedType) {
+                tags.push(selectedType.value);
+            }
+            // Затем собираем значения всех чекбоксов
+            const optionCheckboxes = form.querySelectorAll('input[type="checkbox"]:checked:not(#id_public)');
+            optionCheckboxes.forEach(checkbox => {
+                tags.push(checkbox.value);
+            });
+            // Обновляем поле ввода тегов
+            tagsInput.value = tags.join(', ');
+        }
+
+        // Инициализация при загрузке
+        updateTags();
+    });
+</script>
 
 <!-- ------------- -->
 <div class="container mb-5 p-3 px-5 rounded bg-white-75 shadow-sm">
