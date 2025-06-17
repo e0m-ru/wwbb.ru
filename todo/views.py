@@ -11,11 +11,11 @@ def main_page(request):
     insert_thumbnail(all_posts)
     shuffle(list(all_posts))
     context = {
-        'title': 'МебелЯ',
+        'title': 'МебелЯ - Производство мебели',
         'example_01': all_posts[:4],
         'example_02': all_posts[4:8],
         'example_03': all_posts[8:12],
-        'description': 'Сайт производства корпусной мебели на заказ.',
+        'description': 'производство корпусной мебели на заказ',
     }
     return render(request, 'todo/index.html', context)
 
