@@ -5,11 +5,12 @@ const form = document.getElementById('post_form');
 blocks.forEach(block => {
     block.addEventListener('click', function () {
         const titleInput = form.querySelector('#id_title');
-        titleInput.value = block.querySelector('#description').innerHTML.split(/[.,]+/)[0];
+        titleInput.value = block.querySelector('#vk_description').innerHTML.split(/[.,]+/)[0];
         const textInput = form.querySelector('#id_description');
-        textInput.value = block.querySelector('#description').innerHTML;
+        textInput.value = block.querySelector('#vk_description').innerHTML;
         const tags = form.querySelector('#id_tags');
-        tags.value = block.querySelector('#description').innerHTML.split(/[., ]+/).filter(word => word.length > 2).map(word => word.toLowerCase()).join(', ');;
+        // tags.value = block.querySelector('#vk_description').innerHTML.split(/[., ]+/).filter(word => word.length > 2).map(word => word.toLowerCase()).join(', ');
+
         window.scrollTo(0, 0);
         // load files
         const images = block.querySelectorAll('a')
@@ -41,6 +42,15 @@ async function fetchImageAsFile(imgUrl, fileName) {
 async function addImagesToFileInput(images) {
     const files = [];
     const fileInput = form.querySelector('#id_image');
+    const albumDiv = form.querySelector('#album'); // Получаем div
+
+    // Очищаем file input
+    fileInput.value = ''; // Очищаем значение
+    const clearDataTransfer = new DataTransfer();
+    fileInput.files = clearDataTransfer.files; // Очищаем FileList
+
+    albumDiv.innerHTML = ''; // Удаляем всё содержимое
+
     // Собираем все изображения из блоков
     for (const a of images) {
         if (a && a.href) {
@@ -50,9 +60,9 @@ async function addImagesToFileInput(images) {
     }
 
     // Создаём новый FileList и добавляем файлы в input
-    const dataTransfer = new DataTransfer();
-    files.forEach(file => dataTransfer.items.add(file));
-    fileInput.files = dataTransfer.files;
+    const newDataTransfer = new DataTransfer();
+    files.forEach(file => newDataTransfer.items.add(file));
+    fileInput.files = newDataTransfer.files;
 
     console.log('Изображения добавлены в input:', fileInput.files);
 }

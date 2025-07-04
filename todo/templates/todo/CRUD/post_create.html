@@ -133,9 +133,9 @@
         <label for="id_rating">Рейтинг (чем больше тем выше в выдаче):</label>
         <input class="form-control" type="number" name="rating" id="id_rating" value="10">
 
+        <h5 class="form-label">Фото Альбом</h5>
+        <input class="form-control " type="file" name="image" multiple="" required="required" id="id_image">
         <div id="album" class="mb-3">
-            <h5 class="form-label">Фото Альбом</h5>
-            <input class="form-control " type="file" name="image" multiple="" required="required" id="id_image">
         </div>
         <div class="mb-3">
 
@@ -196,7 +196,7 @@
                     <b style="text-indent: 0;">{{post.id}}</b>
                 </div>
                 <div class="text-white p-1 bg-primary-75 foo">
-                    <p id="description" style="text-indent: 0; font-size: xx-small;">{{ post.text }}</p>
+                    <p id="vk_description" style="text-indent: 0; font-size: xx-small;">{{ post.text }}</p>
                 </div>
             </div>
             <div style="display: none;">
