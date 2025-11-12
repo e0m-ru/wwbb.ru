@@ -8,9 +8,9 @@ def get_access_token(client_id: int, scope: int) -> None:
     assert client_id > 0, 'clinet_id must be positive integer'
     url = """\
     https://oauth.vk.com/authorize?client_id={client_id}&\
-    redirect_uri=https://oauth.vk.com/blank.hmtl&\
+    redirect_uri=https://oauth.vk.com/blank.html&\
     scope={scope}&\
-    &response_type=token&\
+    response_type=token&\
     display=page\
     """.replace(" ", "").format(client_id=client_id, scope=scope)
     webbrowser.open_new_tab(url)
