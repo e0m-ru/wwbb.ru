@@ -81,7 +81,7 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = '/profile'
 LOGIN_URL = 'login'
-VK_SERVICE_KEY = "f7417ba0f7417ba0f7417ba0b4f4542826ff741f7417ba0939a2a6f0dbf304a8d7f0864"
+VK_SERVICE_KEY = "55a8a09355a8a09355a8a093c8568fc708555a855a8a093322db17fe72675769834aae6"
 VK_WWBB = "732870827" # Пашина страница
 
 CSRF_TRUSTED_ORIGINS = ['https://wwbb.ru', 'https://*.127.0.0.1']
