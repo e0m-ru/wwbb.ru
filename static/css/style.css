@@ -103,3 +103,13 @@ body {
 .btn:hover {
     color: var(--bs-white);
 }
+
+.vk-card {
+    background-position: center;
+    background-size: cover;
+    height: 10rem;
+    cursor: pointer;
+
+}
+.vk-card:hover {
+}

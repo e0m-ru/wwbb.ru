@@ -191,12 +191,12 @@
 
         {% for post in posts %}
         <div id="{{post.id}}" class="col clickable-block">
-            <div class="card mb-2 assa zoom" style=" background-image: url('{{post.attachments.0.photo.sizes.2.url}}')">
+            <div class="card mb-2 vk-card" style="background-image: url('{{post.attachments.0.photo.sizes.2.url}}')">
                 <div class="text-white bg-primary-75 top">
                     <b style="text-indent: 0;">{{post.id}}</b>
                 </div>
                 <div class="text-white p-1 bg-primary-75 foo">
-                    <p id="vk_description" style="text-indent: 0; font-size: xx-small;">{{ post.text }}</p>
+                    <p id="vk_description" style="text-indent: 0;">{{ post.text }}</p>
                 </div>
             </div>
             <div style="display: none;">
@@ -211,7 +211,5 @@
         {% endfor %}
     </div>
 </div>
-
 <script src="{% static 'js/vk_repost.js' %}" async="async"></script>
-
 {% endblock main_content %}
