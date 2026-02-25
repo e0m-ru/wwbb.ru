@@ -4,4 +4,4 @@ Disallow: /profile
 Disallow: /login
 Disallow: /create
 Disallow: /update/
-Sitemap: https://wwbb.ru/sitemap.txt
+Sitemap: https://wwbb.ru/sitemap.xml
